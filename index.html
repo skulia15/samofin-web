@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samofin Tækni · Samofin Connector</title>
+<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint automatically.">
+<link rel="canonical" href="https://samofin.com/">
+<link rel="alternate" hreflang="en" href="https://samofin.com/">
+<link rel="alternate" hreflang="is" href="https://samofin.com/?lang=is">
+<link rel="alternate" hreflang="x-default" href="https://samofin.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samofin.com/">
+<meta property="og:title" content="Samofin Tækni · Samofin Connector">
+<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint automatically.">
+<link rel="icon" href="samofin-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1B2A41;
+  --paper: #F6F5F1;
+  --teal: #3FB8AF;
+  --body: #3E4756;
+  --muted: #5E6672;
+  --rule: #CFCEC8;
+  --mono: 'IBM Plex Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+::selection { background: var(--ink); color: var(--paper); }
+.mono { font-family: var(--mono); }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--muted); }
+
+.outer { padding: clamp(10px, 2vw, 24px); }
+.sheet { position: relative; max-width: 1160px; margin: 0 auto; }
+.sheet::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--ink); pointer-events: none; z-index: 1; }
+.inner { padding: 0 clamp(18px, 4vw, 48px); }
+
+/* Header */
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding: 22px 0; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { width: 34px; height: 34px; display: block; }
+.brand-name { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.brand-name span { font-weight: 300; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--mono); font-size: 14px; }
+.site-nav a { text-decoration: none; color: var(--muted); }
+.site-nav a:hover { color: var(--ink); }
+.header-end { display: flex; align-items: center; gap: 18px; }
+.lang { display: flex; border: 1px solid var(--rule); font-family: var(--mono); font-size: 13px; }
+.lang button { margin: 0; padding: 3px 7px; border: 0; background: none; font: inherit; color: var(--muted); cursor: pointer; }
+.lang button:hover { color: var(--ink); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); cursor: default; }
+.lang button:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+.header-mail { font-size: 15px; font-weight: 500; }
+
+/* Sections */
+section { border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+.hero { padding: clamp(48px, 7vw, 88px) 0 clamp(56px, 8vw, 96px); }
+.hero h1 { margin: 0; max-width: 760px; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.25; font-weight: 500; letter-spacing: -0.01em; text-wrap: pretty; }
+.hero p { margin: 24px 0 0; max-width: 620px; font-size: 18px; line-height: 1.6; color: var(--body); text-wrap: pretty; }
+
+.split { display: flex; flex-wrap: wrap; gap: 16px 56px; padding: 56px 0 72px; }
+.split h2 { flex: 0 1 260px; margin: 0; font-size: 24px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+.split > div { flex: 1 1 420px; max-width: 680px; min-width: 0; }
+.split p { margin: 0; font-size: 18px; line-height: 1.65; color: var(--body); text-wrap: pretty; }
+#pricing { padding-bottom: 80px; }
+#pricing a { font-weight: 500; }
+
+/* Diagram: wide/narrow swap at 580px container width */
+figure { margin: 0; container-type: inline-size; }
+.box { border: 1px solid var(--ink); background: var(--paper); padding: 10px 12px; }
+.box-title { margin-top: 4px; font-size: 15px; font-weight: 600; }
+.box.hub { outline: 1px solid var(--ink); outline-offset: 3px; }
+.hub .label { display: flex; align-items: center; gap: 6px; }
+.hub .label::before { content: ""; width: 6px; height: 6px; background: var(--teal); }
+.hub-sub { margin-top: 2px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.line { position: absolute; background: var(--ink); }
+.arrow-r::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 7px solid var(--ink); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
+.arrow-d::after { content: ""; position: absolute; bottom: 0; left: -4px; border-top: 7px solid var(--ink); border-left: 4.5px solid transparent; border-right: 4.5px solid transparent; }
+
+.dia-wide { display: flex; align-items: center; }
+.dia-wide > .box:first-child { flex: 0 0 140px; }
+.dia-wide > .hub { flex: 0 0 160px; box-sizing: border-box; }
+.dia-wide .edge { flex: 1 1 60px; position: relative; height: 1px; background: var(--ink); }
+.dia-wide .edge .mono { position: absolute; left: 0; right: 0; bottom: 8px; text-align: center; font-size: 12px; color: var(--muted); }
+.dia-wide .fan { flex: 1 1 80px; position: relative; height: 160px; }
+.dia-wide .targets { flex: 0 0 130px; display: flex; flex-direction: column; gap: 14px; }
+.dia-wide .targets .box { height: 44px; box-sizing: border-box; padding: 0 12px; display: flex; align-items: center; font-size: 15px; font-weight: 600; }
+
+.dia-narrow { display: none; flex-direction: column; }
+.dia-narrow .hub { margin: 4px; }
+.dia-narrow .vline { align-self: center; position: relative; width: 1px; background: var(--ink); }
+.dia-narrow .vline .mono { position: absolute; left: 12px; top: 13px; white-space: nowrap; font-size: 12px; color: var(--muted); }
+.dia-narrow .bus { position: relative; height: 1px; }
+.dia-narrow .bus::before { content: ""; position: absolute; left: 16.666%; right: 16.666%; top: 0; height: 1px; background: var(--ink); }
+.dia-narrow .targets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.dia-narrow .targets > div { display: flex; flex-direction: column; align-items: center; padding: 0 4px; }
+.dia-narrow .targets .box { width: 100%; box-sizing: border-box; padding: 10px 4px; text-align: center; font-size: 13px; font-weight: 600; }
+
+@container (max-width: 579.98px) {
+  .dia-wide { display: none; }
+  .dia-narrow { display: flex; }
+}
+
+figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+/* Steps & principles */
+.rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+.rows > li, .rows > div { display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 16px 0; border-top: 1px solid var(--rule); }
+.steps { margin-top: 44px; }
+.steps .n { flex: 0 0 20px; font-family: var(--mono); font-size: 13px; line-height: 1.6; color: var(--muted); }
+.steps .t { flex: 0 0 90px; font-size: 17px; line-height: 1.5; font-weight: 600; }
+.steps .d { flex: 1 1 280px; font-size: 17px; line-height: 1.5; color: var(--body); }
+dl.rows { margin: 0; }
+dl.rows > div { gap: 4px 24px; }
+dl.rows dt { flex: 0 0 150px; font-family: var(--mono); font-size: 12px; line-height: 1.9; letter-spacing: 0.08em; text-transform: uppercase; }
+dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; color: var(--body); }
+
+/* Footer: title block */
+.site-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px 48px; padding: 48px 0 clamp(18px, 4vw, 48px); border-top: 1px solid var(--rule); }
+.site-footer > p { margin: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; font-weight: 500; }
+.titleblock { flex: 0 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
+.tb-row { display: grid; gap: 1px; }
+.tb-row > div, .tb-status { background: var(--paper); }
+.tb-top { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.tb-top > div { padding: 12px 14px; display: flex; flex-direction: column; }
+.tb-top img { width: 28px; height: 28px; display: block; }
+.tb-top a { font-size: 14px; align-self: flex-start; }
+.tb-meta { grid-template-columns: 1.6fr 0.7fr 1.3fr 0.9fr 0.9fr; }
+.tb-meta > div { padding: 8px 12px; }
+@media (max-width: 520px) {
+  .tb-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tb-meta .span2 { grid-column: span 2; }
+}
+.tb-meta .v { margin-top: 3px; font-family: var(--mono); font-size: 13px; }
+.tb-status { padding: 9px 12px; font-family: var(--mono); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="sheet">
+    <div class="inner">
+
+      <header class="site-header">
+        <a href="#top" class="brand" aria-label="Samofin Tækni">
+          <img src="samofin-mark.svg" alt="">
+          <span class="brand-name">Samofin <span>Tækni</span></span>
+        </a>
+        <nav class="site-nav" aria-label="Sections" data-i18n-aria-label="nav.label">
+          <a href="#problem" data-i18n="nav.problem">Problem</a>
+          <a href="#how" data-i18n="nav.how">How it works</a>
+          <a href="#principles" data-i18n="nav.principles">Principles</a>
+          <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        </nav>
+        <div class="header-end">
+          <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
+            <button type="button" lang="en" data-lang="en" aria-pressed="true" title="English">EN</button>
+            <button type="button" lang="is" data-lang="is" aria-pressed="false" title="Íslenska">IS</button>
+          </div>
+          <a class="header-mail" href="mailto:hello@samofin.com">hello@samofin.com</a>
+        </div>
+      </header>
+
+      <main>
+        <section id="top" class="hero">
+          <h1 data-i18n="hero.title">Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint.</h1>
+          <p data-i18n="hero.lede">You choose which folders to follow. Each new version is copied to the matching folder in your site system and logged.</p>
+        </section>
+
+        <section id="problem" class="split">
+          <h2 data-i18n="problem.title">Every revision is copied by hand.</h2>
+          <div>
+            <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs. Owners increasingly require it as the project web. Contractors run site work and quality control in other systems. Someone copies every new revision across by hand, and outdated drawings end up on site.</p>
+          </div>
+        </section>
+
+        <section id="how" class="split">
+          <h2 data-i18n="how.title">One source, several targets.</h2>
+          <div>
+            <figure>
+              <div class="dia-wide" aria-hidden="true">
+                <div class="box">
+                  <div class="label" data-i18n="fig.source">SOURCE</div>
+                  <div class="box-title">Autodesk Docs</div>
+                </div>
+                <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span></div>
+                <div class="box hub">
+                  <div class="label">SAMOFIN</div>
+                  <div class="box-title">Connector</div>
+                  <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
+                </div>
+                <div class="fan">
+                  <span class="line" style="left:0;width:45%;top:80px;height:1px;"></span>
+                  <span class="line" style="left:45%;top:22px;width:1px;height:117px;"></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:22px;height:1px;"></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:138px;height:1px;"></span>
+                </div>
+                <div class="targets">
+                  <div class="box">Procore</div>
+                  <div class="box">AjourBox</div>
+                  <div class="box">SharePoint</div>
+                </div>
+              </div>
+
+              <div class="dia-narrow" aria-hidden="true">
+                <div class="box">
+                  <div class="label" data-i18n="fig.source">SOURCE</div>
+                  <div class="box-title">Autodesk Docs</div>
+                </div>
+                <div class="vline arrow-d" style="height:40px;"><span class="mono" data-i18n="fig.readonly">read-only</span></div>
+                <div class="box hub">
+                  <div class="label">SAMOFIN</div>
+                  <div class="box-title">Connector</div>
+                  <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
+                </div>
+                <div class="vline" style="height:20px;"></div>
+                <div class="bus"></div>
+                <div class="targets">
+                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">Procore</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">AjourBox</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">SharePoint</div></div>
+                </div>
+              </div>
+
+              <figcaption data-i18n="fig.caption">Fig. 1 · Autodesk Docs → Samofin Connector → Procore / AjourBox / SharePoint</figcaption>
+            </figure>
+
+            <ol class="rows steps">
+              <li><span class="n">1</span><span class="t" data-i18n="step.connect.t">Connect</span><span class="d" data-i18n="step.connect.d">Your admin authorises read access to the project in Autodesk Docs.</span></li>
+              <li><span class="n">2</span><span class="t" data-i18n="step.map.t">Map</span><span class="d" data-i18n="step.map.d">Choose which folders sync to which folders in your system.</span></li>
+              <li><span class="n">3</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">New versions are copied automatically, and every copy is logged.</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="principles" class="split">
+          <h2 data-i18n="principles.title">What the connector does and does not do.</h2>
+          <div>
+            <dl class="rows">
+              <div><dt data-i18n="p.oneway.t">One-way</dt><dd data-i18n="p.oneway.d">Reads from the source, never writes to it.</dd></div>
+              <div><dt data-i18n="p.nodelete.t">Never deletes</dt><dd data-i18n="p.nodelete.d">Removed files are flagged, not deleted.</dd></div>
+              <div><dt data-i18n="p.logged.t">Logged</dt><dd data-i18n="p.logged.d">Every file, every version, when and where.</dd></div>
+              <div><dt data-i18n="p.eu.t">EU-hosted</dt><dd data-i18n="p.eu.d">Hosted in the EU (Google Cloud, Finland).</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section id="pricing" class="split">
+          <h2 data-i18n="pricing.title">Per company, then per project.</h2>
+          <div>
+            <p><span data-i18n="pricing.body">One setup fee per company, then a fixed monthly fee per active project. Finished projects can be archived at no cost.</span> <a href="mailto:hello@samofin.com?subject=Quote%20for%20Samofin%20Connector" data-i18n="pricing.cta" data-i18n-href="pricing.href">Ask for a quote.</a></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p><span data-i18n="footer.cta">Questions and quotes:</span><br><a href="mailto:hello@samofin.com">hello@samofin.com</a></p>
+
+        <div class="titleblock">
+          <div class="tb-row tb-top">
+            <div style="gap:8px;">
+              <img src="samofin-mark.svg" alt="">
+              <div>
+                <div style="font-size:15px;font-weight:600;">Samofin Tækni</div>
+                <div style="font-size:14px;color:var(--muted);" data-i18n="footer.place">Hafnarfjörður, Iceland</div>
+              </div>
+            </div>
+            <div style="gap:6px;">
+              <span class="label" data-i18n="tb.contact">CONTACT</span>
+              <a href="mailto:hello@samofin.com">hello@samofin.com</a>
+              <a href="https://www.linkedin.com/company/145330138/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+          <div class="tb-row tb-meta">
+            <div class="span2"><div class="label" data-i18n="tb.document">DOCUMENT</div><div class="v">SAMOFIN-WEB-001</div></div>
+            <div><div class="label" data-i18n="tb.rev">REV</div><div class="v">A</div></div>
+            <div><div class="label" data-i18n="tb.date">DATE</div><div class="v">2026-10-19</div></div>
+            <div><div class="label" data-i18n="tb.scale">SCALE</div><div class="v">NTS</div></div>
+            <div><div class="label" data-i18n="tb.sheet">SHEET</div><div class="v">1 / 1</div></div>
+          </div>
+          <div class="tb-status" data-i18n="tb.status">Status: in development, pilot projects 2026</div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const IS = {
+    'meta.description': 'Samofin Connector afritar nýjar teikningar og skjöl sjálfkrafa úr Autodesk Docs yfir í Procore, AjourBox og SharePoint.',
+    'nav.label': 'Kaflar',
+    'nav.problem': 'Vandinn',
+    'nav.how': 'Hvernig það virkar',
+    'nav.principles': 'Meginreglur',
+    'nav.pricing': 'Verð',
+    'lang.label': 'Tungumál',
+    'hero.title': 'Samofin Connector afritar nýjar teikningar og skjöl úr Autodesk Docs yfir í Procore, AjourBox og SharePoint.',
+    'hero.lede': 'Þú velur hvaða möppum er fylgst með. Hver ný útgáfa er afrituð í samsvarandi möppu í kerfinu sem notað er á verkstað og skráð.',
+    'problem.title': 'Hver endurskoðun er afrituð handvirkt.',
+    'problem.body': 'Arkitektar og verkfræðingar gefa út í Autodesk Docs. Verkkaupar gera það í auknum mæli að kröfu sem verkefnavef. Verktakar stýra framkvæmdum og gæðaeftirliti í öðrum kerfum. Einhver afritar hverja nýja endurskoðun handvirkt á milli, og úreltar teikningar enda á verkstað.',
+    'how.title': 'Einn uppruni, mörg kerfi.',
+    'fig.source': 'UPPRUNI',
+    'fig.readonly': 'lesaðgangur',
+    'fig.copylog': 'afrita · skrá',
+    'fig.caption': 'Mynd 1 · Autodesk Docs → Samofin Connector → Procore / AjourBox / SharePoint',
+    'step.connect.t': 'Tengja',
+    'step.connect.d': 'Kerfisstjórinn ykkar veitir lesaðgang að verkefninu í Autodesk Docs.',
+    'step.map.t': 'Para',
+    'step.map.d': 'Veldu hvaða möppur samstillast við hvaða möppur í ykkar kerfi.',
+    'step.sync.t': 'Samstilla',
+    'step.sync.d': 'Nýjar útgáfur eru afritaðar sjálfkrafa og hvert afrit er skráð.',
+    'principles.title': 'Hvað tengillinn gerir og gerir ekki.',
+    'p.oneway.t': 'Einstefna',
+    'p.oneway.d': 'Les úr upprunanum, skrifar aldrei í hann.',
+    'p.nodelete.t': 'Eyðir aldrei',
+    'p.nodelete.d': 'Fjarlægðar skrár eru merktar, ekki eytt.',
+    'p.logged.t': 'Skráð',
+    'p.logged.d': 'Hver skrá, hver útgáfa, hvenær og hvert.',
+    'p.eu.t': 'Hýst í ESB',
+    'p.eu.d': 'Hýst innan ESB (Google Cloud, Finnlandi).',
+    'pricing.title': 'Gjald á fyrirtæki, svo á verkefni.',
+    'pricing.body': 'Eitt stofngjald á fyrirtæki, síðan fast mánaðargjald fyrir hvert virkt verkefni. Lokin verkefni má setja í geymslu án kostnaðar.',
+    'pricing.cta': 'Fáðu tilboð.',
+    'pricing.href': 'mailto:hello@samofin.com?subject=Tilbo%C3%B0%20%C3%AD%20Samofin%20Connector',
+    'footer.cta': 'Spurningar og tilboð:',
+    'footer.place': 'Hafnarfjörður, Ísland',
+    'tb.contact': 'SAMBAND',
+    'tb.document': 'SKJAL',
+    'tb.rev': 'ÚTG.',
+    'tb.date': 'DAGS.',
+    'tb.scale': 'KVARÐI',
+    'tb.sheet': 'BLAÐ',
+    'tb.status': 'Staða: í þróun, tilraunaverkefni 2026',
+  };
+  const ATTRS = { 'data-i18n': null, 'data-i18n-content': 'content', 'data-i18n-aria-label': 'aria-label', 'data-i18n-href': 'href' };
+
+  // English is the markup itself; remember it so switching back restores it.
+  const targets = [];
+  for (const [marker, attr] of Object.entries(ATTRS)) {
+    for (const el of document.querySelectorAll(`[${marker}]`)) {
+      const key = el.getAttribute(marker);
+      const en = attr ? el.getAttribute(attr) : el.textContent;
+      targets.push({ el, attr, key, en });
+    }
+  }
+
+  function apply(lang) {
+    for (const { el, attr, key, en } of targets) {
+      const value = lang === 'is' ? IS[key] ?? en : en;
+      if (attr) el.setAttribute(attr, value);
+      else el.textContent = value;
+    }
+    document.documentElement.lang = lang;
+    for (const b of document.querySelectorAll('[data-lang]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    }
+  }
+
+  function initialLang() {
+    const param = new URLSearchParams(location.search).get('lang');
+    if (param === 'is' || param === 'en') return param;
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'is' || saved === 'en') return saved;
+    } catch {}
+    return /^is\b/i.test(navigator.language || '') ? 'is' : 'en';
+  }
+
+  document.querySelector('.lang').addEventListener('click', (e) => {
+    const lang = e.target.closest('[data-lang]')?.dataset.lang;
+    if (!lang || lang === document.documentElement.lang) return;
+    apply(lang);
+    try { localStorage.setItem('lang', lang); } catch {}
+    const url = new URL(location.href);
+    if (lang === 'is') url.searchParams.set('lang', 'is');
+    else url.searchParams.delete('lang');
+    history.replaceState(null, '', url);
+  });
+
+  const lang = initialLang();
+  if (lang !== 'en') apply(lang);
+})();
+</script>
+</body>
+</html>
