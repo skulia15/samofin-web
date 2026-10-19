@@ -40,6 +40,13 @@
       "logo": "https://samofin.com/apple-touch-icon.png",
       "email": "hello@samofin.com",
       "sameAs": ["https://www.linkedin.com/company/145330138/"],
+      "founder": {
+        "@type": "Person",
+        "name": "Skúli Arnarsson",
+        "jobTitle": "Software developer",
+        "email": "skuli@samofin.com",
+        "sameAs": ["https://www.linkedin.com/in/skulipardus/"]
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Hafnarfjörður",
@@ -206,7 +213,10 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
 
 /* Footer: title block */
 .site-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px 48px; padding: 48px 0 clamp(18px, 4vw, 48px); border-top: 1px solid var(--rule); }
-.site-footer > p { margin: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; font-weight: 500; }
+.footer-lead { flex: 1 1 320px; max-width: 460px; }
+.footer-lead > p { margin: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; font-weight: 500; }
+.footer-lead .founder { margin-top: 28px; font-size: 16px; line-height: 1.6; font-weight: 400; color: var(--body); text-wrap: pretty; }
+.footer-lead .founder a { font-weight: 500; }
 .titleblock { flex: 0 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
 .tb-row { display: grid; gap: 1px; }
 .tb-row > div, .tb-status { background: var(--paper); }
@@ -222,6 +232,8 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
 }
 .tb-meta .v { margin-top: 3px; font-family: var(--mono); font-size: 13px; }
 .tb-status { padding: 9px 12px; font-family: var(--mono); font-size: 12px; }
+.tb-drawn > div { padding: 8px 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.tb-drawn .v { font-family: var(--mono); font-size: 13px; }
 </style>
 </head>
 <body>
@@ -279,7 +291,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk"></span></div>
                 <div class="box hub">
                   <div class="label">SAMOFIN</div>
-                  <div class="box-title">Connector</div>
+                  <div class="box-title" data-i18n="fig.hub">Connector</div>
                   <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
                 </div>
                 <div class="fan">
@@ -306,7 +318,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 <div class="vline arrow-d" style="height:40px;"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk down"></span></div>
                 <div class="box hub">
                   <div class="label">SAMOFIN</div>
-                  <div class="box-title">Connector</div>
+                  <div class="box-title" data-i18n="fig.hub">Connector</div>
                   <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
                 </div>
                 <div class="vline" style="height:20px;"><span class="pk down" style="--d:1.2s;"></span></div>
@@ -368,7 +380,10 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
       </main>
 
       <footer class="site-footer">
-        <p><span data-i18n="footer.cta">Questions or a quote?</span><br><a href="mailto:hello@samofin.com">hello@samofin.com</a></p>
+        <div class="footer-lead">
+          <p><span data-i18n="footer.cta">Questions or a quote?</span><br><a href="mailto:hello@samofin.com">hello@samofin.com</a></p>
+          <p class="founder"><span data-i18n="footer.founder">I’m Skúli Arnarsson, the software developer behind Samofin Connector. Pilot customers work directly with me.</span> <a href="mailto:skuli@samofin.com">skuli@samofin.com</a> · <a href="https://www.linkedin.com/in/skulipardus/" target="_blank" rel="noopener">LinkedIn</a></p>
+        </div>
 
         <div class="titleblock">
           <div class="tb-row tb-top">
@@ -391,6 +406,9 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
             <div><div class="label" data-i18n="tb.date">DATE</div><div class="v">2026-10-19</div></div>
             <div><div class="label" data-i18n="tb.scale">SCALE</div><div class="v">NTS</div></div>
             <div><div class="label" data-i18n="tb.sheet">SHEET</div><div class="v">1 / 1</div></div>
+          </div>
+          <div class="tb-row tb-drawn">
+            <div><span class="label" data-i18n="tb.drawnby">DRAWN BY</span><span class="v">Skúli Arnarsson</span></div>
           </div>
           <div class="tb-status" data-i18n="tb.status">Status: launching 2027, pilot places open</div>
         </div>
