@@ -45,7 +45,23 @@ function render(dict) {
     return tag.replace(ATTR_MARKER_RE, '');
   });
   if (html.includes('data-i18n')) throw new Error('unprocessed data-i18n marker');
-  return html;
+  return html.replace('<!--faq-jsonld-->', faqJsonLd(html));
+}
+
+// FAQPage structured data built from the rendered #faq section, so it always matches the page.
+function faqJsonLd(html) {
+  const section = html.match(/<section id="faq"[\s\S]*?<\/section>/)?.[0];
+  if (!section) throw new Error('no #faq section');
+  const unescape = (s) =>
+    s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+  const mainEntity = [...section.matchAll(/<dt>([^<]*)<\/dt><dd>([^<]*)<\/dd>/g)].map(([, q, a]) => ({
+    '@type': 'Question',
+    name: unescape(q),
+    acceptedAnswer: { '@type': 'Answer', text: unescape(a) },
+  }));
+  if (!mainEntity.length) throw new Error('no FAQ entries found');
+  const json = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity }, null, 2);
+  return `<script type="application/ld+json">\n${json.replace(/</g, '\\u003c')}\n</script>`;
 }
 
 rmSync(DIST, { recursive: true, force: true });

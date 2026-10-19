@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Source for src/og-image.png (1200×630). Regenerate with: npm run og -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: 'Manrope'; font-weight: 300 700; src: url(../src/fonts/manrope-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 400; src: url(../src/fonts/ibm-plex-mono-latin-400.woff2) format('woff2'); }
+:root { --ink: #1B2A41; --paper: #F6F5F1; --teal: #3FB8AF; --muted: #5E6672; --rule: #CFCEC8; --mono: 'IBM Plex Mono', monospace; }
+html, body { margin: 0; width: 1200px; height: 630px; background: var(--paper); color: var(--ink); font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+.sheet { position: absolute; inset: 28px; border: 1.5px solid var(--ink); display: flex; flex-direction: column; padding: 0 56px; }
+.top { display: flex; align-items: center; justify-content: space-between; padding: 30px 0 26px; border-bottom: 1px solid var(--rule); }
+.brand { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.brand img { width: 48px; height: 48px; }
+.brand span { font-weight: 300; }
+.url { font-family: var(--mono); font-size: 22px; color: var(--muted); }
+h1 { margin: 44px 0 0; max-width: 1000px; font-size: 50px; line-height: 1.16; font-weight: 500; letter-spacing: -0.015em; }
+.bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; margin-bottom: 42px; }
+.flow { display: flex; align-items: center; font-size: 21px; font-weight: 600; }
+.box { border: 1.5px solid var(--ink); padding: 10px 16px; white-space: nowrap; }
+.hub { outline: 1.5px solid var(--ink); outline-offset: 4px; display: flex; align-items: center; gap: 10px; }
+.hub::before { content: ""; width: 9px; height: 9px; background: var(--teal); }
+.edge { width: 64px; height: 1.5px; background: var(--ink); position: relative; margin: 0 8px; }
+.edge::after { content: ""; position: absolute; right: 0; top: -5px; border-left: 9px solid var(--ink); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.targets { display: flex; gap: 10px; }
+.meta { display: flex; align-items: center; gap: 28px; }
+.status { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 17px; letter-spacing: 0.06em; }
+.status::before { content: ""; width: 9px; height: 9px; background: var(--teal); }
+</style></head>
+<body>
+<div class="sheet">
+  <div class="top">
+    <div class="brand"><img src="../src/samofin-mark.svg" alt=""><div>Samofin <span>Tækni</span></div></div>
+    <div class="meta"><div class="status">PILOT 2027</div><div class="url">samofin.com</div></div>
+  </div>
+  <h1>New drawings and documents from Autodesk Docs, copied to Procore, AjourBox and SharePoint automatically.</h1>
+  <div class="bottom">
+    <div class="flow">
+      <div class="box">Autodesk Docs</div>
+      <div class="edge"></div>
+      <div class="box hub">Samofin Connector</div>
+      <div class="edge"></div>
+      <div class="targets"><div class="box">Procore</div><div class="box">AjourBox</div><div class="box">SharePoint</div></div>
+    </div>
+  </div>
+</div>
+</body></html>

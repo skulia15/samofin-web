@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "preview": "node build.mjs && npx --yes serve@14.2.4 dist"
+    "preview": "node build.mjs && npx --yes serve@14.2.4 dist",
+    "og": "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files --virtual-time-budget=5000 --window-size=1200,630 --screenshot=src/og-image.png \"file://$PWD/og/og-image.html\""
   }
 }

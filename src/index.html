@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="meta.title">Samofin Connector – Sync Autodesk Docs to Procore, AjourBox &amp; SharePoint</title>
-<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint automatically. One-way, logged, EU-hosted.">
+<title data-i18n="meta.title">Autodesk Docs to Procore, AjourBox &amp; SharePoint – Samofin</title>
+<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (ACC) to Procore, AjourBox and SharePoint. One-way, fully logged, EU-hosted.">
 <meta name="theme-color" content="#F6F5F1">
 <link rel="canonical" href="https://samofin.com/" data-i18n-href="url.self">
 <link rel="alternate" hreflang="en" href="https://samofin.com/">
@@ -14,8 +14,8 @@
 <meta property="og:url" content="https://samofin.com/" data-i18n-content="url.self">
 <meta property="og:locale" content="en_GB" data-i18n-content="og.locale">
 <meta property="og:locale:alternate" content="is_IS" data-i18n-content="og.locale.alternate">
-<meta property="og:title" content="Samofin Connector – Sync Autodesk Docs to Procore, AjourBox &amp; SharePoint" data-i18n-content="meta.title">
-<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint automatically. One-way, logged, EU-hosted." data-i18n-content="meta.description">
+<meta property="og:title" content="Autodesk Docs to Procore, AjourBox &amp; SharePoint – Samofin" data-i18n-content="meta.title">
+<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (ACC) to Procore, AjourBox and SharePoint. One-way, fully logged, EU-hosted." data-i18n-content="meta.description">
 <meta property="og:site_name" content="Samofin Tækni">
 <meta property="og:image" content="https://samofin.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -51,13 +51,14 @@
       "name": "Samofin Connector",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "Copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, logged, hosted in the EU.",
+      "description": "Copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, fully logged, hosted in the EU.",
       "url": "https://samofin.com/",
       "publisher": { "@id": "https://samofin.com/#org" }
     }
   ]
 }
 </script>
+<!--faq-jsonld-->
 <style>
 @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/fonts/manrope-latin-var.woff2) format('woff2'); }
 @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/ibm-plex-mono-latin-400.woff2) format('woff2'); }
@@ -111,6 +112,14 @@ section { border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
 .split > div { flex: 1 1 420px; max-width: 680px; min-width: 0; }
 .split p { margin: 0; font-size: 18px; line-height: 1.65; color: var(--body); text-wrap: pretty; }
 #pricing { padding-bottom: 80px; }
+.launch { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 36px; }
+.launch .label { display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.launch .label::before { content: ""; width: 7px; height: 7px; background: var(--teal); }
+.cta { display: inline-block; padding: 11px 18px; background: var(--ink); color: var(--paper); font-weight: 600; font-size: 16px; text-decoration: none; }
+.cta:hover { color: var(--paper); background: #24365A; }
+.cta:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+dl.rows.faq dt { flex: 1 1 100%; font-family: inherit; font-size: 17px; line-height: 1.5; font-weight: 600; letter-spacing: 0; text-transform: none; }
+dl.rows.faq dd { flex-basis: 100%; }
 #pricing a { font-weight: 500; }
 
 /* Diagram: wide/narrow swap at 580px container width */
@@ -230,6 +239,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <a href="#how" data-i18n="nav.how">How it works</a>
           <a href="#principles" data-i18n="nav.principles">Principles</a>
           <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
         </nav>
         <div class="header-end">
           <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
@@ -243,13 +253,17 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
       <main>
         <section id="top" class="hero">
           <h1 data-i18n="hero.title">Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint.</h1>
-          <p data-i18n="hero.lede">You choose which folders to follow. Each new version is copied to the matching folder in your site system and logged.</p>
+          <p data-i18n="hero.lede">You choose which folders to follow. Each new version lands in the matching folder in your site system, and every copy is logged.</p>
+          <div class="launch">
+            <a class="cta" href="mailto:hello@samofin.com?subject=Samofin%20Connector%20pilot" data-i18n="hero.cta" data-i18n-href="hero.cta.href">Join the pilot</a>
+            <span class="label" data-i18n="hero.status">Launching 2027 · pilot places open</span>
+          </div>
         </section>
 
         <section id="problem" class="split">
           <h2 data-i18n="problem.title">Every revision is copied by hand.</h2>
           <div>
-            <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs, part of Autodesk Construction Cloud (ACC). Owners increasingly require it as the project web. Contractors run site work and quality control in other systems. Someone copies every new revision across by hand, and outdated drawings end up on site.</p>
+            <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs, part of Autodesk Construction Cloud (ACC). Owners increasingly require it as the project’s common data environment (CDE). Contractors run site work and quality control in other systems. Someone copies every new revision across by hand, and outdated drawings end up on site.</p>
           </div>
         </section>
 
@@ -308,9 +322,10 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
             </figure>
 
             <ol class="rows steps">
-              <li><span class="n">1</span><span class="t" data-i18n="step.connect.t">Connect</span><span class="d" data-i18n="step.connect.d">Your admin authorises read access to the project in Autodesk Docs.</span></li>
-              <li><span class="n">2</span><span class="t" data-i18n="step.map.t">Map</span><span class="d" data-i18n="step.map.d">Choose which folders sync to which folders in your system.</span></li>
-              <li><span class="n">3</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">New versions are copied automatically, and every copy is logged.</span></li>
+              <li><span class="n">1</span><span class="t" data-i18n="step.connect.t">Connect</span><span class="d" data-i18n="step.connect.d">Your Autodesk admin adds Samofin Connector as a custom integration with read-only access.</span></li>
+              <li><span class="n">2</span><span class="t" data-i18n="step.map.t">Map</span><span class="d" data-i18n="step.map.d">Together we choose which Autodesk folders sync to which folders in your site system.</span></li>
+              <li><span class="n">3</span><span class="t" data-i18n="step.review.t">Review</span><span class="d" data-i18n="step.review.d">Before anything is copied, you review a dry run showing exactly what will be created.</span></li>
+              <li><span class="n">4</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">New versions are copied automatically, and every copy is logged.</span></li>
             </ol>
           </div>
         </section>
@@ -320,8 +335,9 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <div>
             <dl class="rows">
               <div><dt data-i18n="p.oneway.t">One-way</dt><dd data-i18n="p.oneway.d">Reads from the source, never writes to it.</dd></div>
-              <div><dt data-i18n="p.nodelete.t">Never deletes</dt><dd data-i18n="p.nodelete.d">Removed files are flagged, not deleted.</dd></div>
-              <div><dt data-i18n="p.logged.t">Logged</dt><dd data-i18n="p.logged.d">Every file, every version, when and where.</dd></div>
+              <div><dt data-i18n="p.nodelete.t">Never deletes</dt><dd data-i18n="p.nodelete.d">Nothing is deleted in your site system. Files removed in Autodesk are flagged for review.</dd></div>
+              <div><dt data-i18n="p.versions.t">Versions, not copies</dt><dd data-i18n="p.versions.d">A new revision becomes a new version of the same file, so history stays in one place.</dd></div>
+              <div><dt data-i18n="p.logged.t">Logged</dt><dd data-i18n="p.logged.d">An append-only log of every file and version: what, when and where.</dd></div>
               <div><dt data-i18n="p.eu.t">EU-hosted</dt><dd data-i18n="p.eu.d">Hosted in the EU (Google Cloud, Finland).</dd></div>
             </dl>
           </div>
@@ -331,6 +347,21 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <h2 data-i18n="pricing.title">Per company, then per project.</h2>
           <div>
             <p><span data-i18n="pricing.body">One setup fee per company, then a fixed monthly fee per active project. Finished projects can be archived at no cost.</span> <a href="mailto:hello@samofin.com?subject=Quote%20for%20Samofin%20Connector" data-i18n="pricing.cta" data-i18n-href="pricing.href">Ask for a quote.</a></p>
+          </div>
+        </section>
+
+        <section id="faq" class="split">
+          <h2 data-i18n="faq.title">Questions and answers.</h2>
+          <div>
+            <dl class="rows faq">
+              <div><dt data-i18n="faq.types.q">Which file types are synced?</dt><dd data-i18n="faq.types.a">All of them. Every file in a mapped folder is copied as it is: PDF, DWG, IFC, RVT, Office files and anything else.</dd></div>
+              <div><dt data-i18n="faq.speed.q">How fast does a new version arrive?</dt><dd data-i18n="faq.speed.a">Within the hour. Mapped folders are checked for changes every 15 minutes by default.</dd></div>
+              <div><dt data-i18n="faq.perms.q">What access does it need?</dt><dd data-i18n="faq.perms.a">Read-only access to Autodesk Docs, which your Autodesk account admin grants as a custom integration. In your site system, a dedicated service account with access only to the projects or sites you choose. It never writes to Autodesk and never deletes anything.</dd></div>
+              <div><dt data-i18n="faq.setup.q">How long does setup take?</dt><dd data-i18n="faq.setup.a">A few weeks from agreement to go-live. We set up the folder mapping with you, you review a dry run, and the connector then runs alongside your current process for one to two weeks before you switch over.</dd></div>
+              <div><dt data-i18n="faq.revisions.q">What happens when a drawing is revised?</dt><dd data-i18n="faq.revisions.a">The new revision is added as a new version of the same file in your site system, so the history is kept and nothing is duplicated. Older versions are never removed, and renamed or moved files are tracked rather than uploaded again.</dd></div>
+              <div><dt data-i18n="faq.targets.q">Which systems does it support?</dt><dd data-i18n="faq.targets.a">Autodesk Docs (Autodesk Construction Cloud) as the source, and Procore, AjourBox and SharePoint as targets. One Autodesk project can feed several targets at once.</dd></div>
+              <div><dt data-i18n="faq.start.q">When can we start?</dt><dd data-i18n="faq.start.a">Samofin Connector launches in 2027, and we are taking on pilot customers now. Pilot customers help shape the product and get set up first.</dd></div>
+            </dl>
           </div>
         </section>
       </main>
@@ -360,7 +391,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
             <div><div class="label" data-i18n="tb.scale">SCALE</div><div class="v">NTS</div></div>
             <div><div class="label" data-i18n="tb.sheet">SHEET</div><div class="v">1 / 1</div></div>
           </div>
-          <div class="tb-status" data-i18n="tb.status">Status: in development, pilot projects 2026</div>
+          <div class="tb-status" data-i18n="tb.status">Status: launching 2027, pilot places open</div>
         </div>
       </footer>
 
