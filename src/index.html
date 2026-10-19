@@ -149,6 +149,38 @@ figure { margin: 0; container-type: inline-size; }
   .dia-narrow { display: flex; }
 }
 
+/* Diagram motion: a document packet runs each segment in turn, all on one 5s
+   cycle sequenced by --d. A .pk overlays its line, so translate(100%) of its
+   own box is exactly the segment length at any width. */
+.pk { position: absolute; inset: 0; pointer-events: none; opacity: 0; --to: translateX(100%); animation: pk 5s linear var(--d, 0s) infinite; }
+.pk::before { content: ""; position: absolute; left: -2px; top: -2px; width: 5px; height: 5px; background: var(--teal); }
+.pk.down { --to: translateY(100%); }
+.pk.left { --to: translateX(-100%); }
+.pk.left::before { left: auto; right: -3px; }
+.pk.up { --to: translateY(-100%); }
+.pk.up::before { top: auto; bottom: -3px; }
+@keyframes pk {
+  0% { opacity: 1; transform: none; }
+  12% { opacity: 1; transform: var(--to); }
+  12.01%, 100% { opacity: 0; transform: var(--to); }
+}
+.hub .label::before { animation: hub 5s ease-out 0.6s infinite; }
+@keyframes hub {
+  0%, 12%, 100% { transform: none; }
+  4% { transform: scale(1.8); }
+}
+.targets .box { position: relative; }
+.targets .box::after { content: ""; position: absolute; top: 6px; right: 6px; width: 5px; height: 5px; background: var(--teal); opacity: 0; animation: tick 5s ease-out var(--d, 0s) infinite; }
+@keyframes tick {
+  0% { opacity: 0; transform: scale(0.3); }
+  3%, 30% { opacity: 1; transform: none; }
+  36%, 100% { opacity: 0; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pk, .targets .box::after { display: none; }
+  .hub .label::before { animation: none; }
+}
+
 figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
 
 /* Steps & principles */
@@ -230,23 +262,25 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                   <div class="label" data-i18n="fig.source">SOURCE</div>
                   <div class="box-title">Autodesk Docs</div>
                 </div>
-                <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span></div>
+                <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk"></span></div>
                 <div class="box hub">
                   <div class="label">SAMOFIN</div>
                   <div class="box-title">Connector</div>
                   <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
                 </div>
                 <div class="fan">
-                  <span class="line" style="left:0;width:45%;top:80px;height:1px;"></span>
+                  <span class="line" style="left:0;width:45%;top:80px;height:1px;"><span class="pk" style="--d:1.2s;"></span></span>
                   <span class="line" style="left:45%;top:22px;width:1px;height:117px;"></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:22px;height:1px;"></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:138px;height:1px;"></span>
+                  <span class="pk up" style="left:45%;top:22px;width:1px;height:58px;--d:1.8s;"></span>
+                  <span class="pk down" style="left:45%;top:80px;width:1px;height:59px;--d:1.8s;"></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:22px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"><span class="pk" style="--d:1.8s;"></span></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:138px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
                 </div>
                 <div class="targets">
-                  <div class="box">Procore</div>
-                  <div class="box">AjourBox</div>
-                  <div class="box">SharePoint</div>
+                  <div class="box" style="--d:3s;">Procore</div>
+                  <div class="box" style="--d:2.4s;">AjourBox</div>
+                  <div class="box" style="--d:3s;">SharePoint</div>
                 </div>
               </div>
 
@@ -255,18 +289,18 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                   <div class="label" data-i18n="fig.source">SOURCE</div>
                   <div class="box-title">Autodesk Docs</div>
                 </div>
-                <div class="vline arrow-d" style="height:40px;"><span class="mono" data-i18n="fig.readonly">read-only</span></div>
+                <div class="vline arrow-d" style="height:40px;"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk down"></span></div>
                 <div class="box hub">
                   <div class="label">SAMOFIN</div>
                   <div class="box-title">Connector</div>
                   <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
                 </div>
-                <div class="vline" style="height:20px;"></div>
-                <div class="bus"></div>
+                <div class="vline" style="height:20px;"><span class="pk down" style="--d:1.2s;"></span></div>
+                <div class="bus"><span class="pk left" style="left:16.666%;width:33.334%;--d:1.8s;"></span><span class="pk" style="left:50%;width:33.334%;--d:1.8s;"></span></div>
                 <div class="targets">
-                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">Procore</div></div>
-                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">AjourBox</div></div>
-                  <div><div class="vline arrow-d" style="height:24px;"></div><div class="box">SharePoint</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">Procore</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:1.8s;"></span></div><div class="box" style="--d:2.4s;">AjourBox</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">SharePoint</div></div>
                 </div>
               </div>
 
