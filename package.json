@@ -1,0 +1,9 @@
+{
+  "name": "samofin-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node build.mjs && npx --yes serve@14.2.4 dist"
+  }
+}

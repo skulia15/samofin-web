@@ -1,29 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-i18n-lang="lang">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Samofin Tækni · Samofin Connector</title>
-<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint automatically.">
-<link rel="canonical" href="https://samofin.com/">
+<title data-i18n="meta.title">Samofin Connector – Sync Autodesk Docs to Procore, AjourBox &amp; SharePoint</title>
+<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint automatically. One-way, logged, EU-hosted.">
+<meta name="theme-color" content="#F6F5F1">
+<link rel="canonical" href="https://samofin.com/" data-i18n-href="url.self">
 <link rel="alternate" hreflang="en" href="https://samofin.com/">
-<link rel="alternate" hreflang="is" href="https://samofin.com/?lang=is">
+<link rel="alternate" hreflang="is" href="https://samofin.com/is/">
 <link rel="alternate" hreflang="x-default" href="https://samofin.com/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://samofin.com/">
-<meta property="og:title" content="Samofin Tækni · Samofin Connector">
-<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Docs to Procore, AjourBox and SharePoint automatically.">
+<meta property="og:url" content="https://samofin.com/" data-i18n-content="url.self">
+<meta property="og:locale" content="en_GB" data-i18n-content="og.locale">
+<meta property="og:locale:alternate" content="is_IS" data-i18n-content="og.locale.alternate">
+<meta property="og:title" content="Samofin Connector – Sync Autodesk Docs to Procore, AjourBox &amp; SharePoint" data-i18n-content="meta.title">
+<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint automatically. One-way, logged, EU-hosted." data-i18n-content="meta.description">
 <meta property="og:site_name" content="Samofin Tækni">
 <meta property="og:image" content="https://samofin.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Samofin Connector: Autodesk Docs to Procore, AjourBox and SharePoint">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="samofin-mark.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/samofin-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://samofin.com/#org",
+      "name": "Samofin Tækni",
+      "url": "https://samofin.com/",
+      "logo": "https://samofin.com/apple-touch-icon.png",
+      "email": "hello@samofin.com",
+      "sameAs": ["https://www.linkedin.com/company/145330138/"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hafnarfjörður",
+        "addressCountry": "IS"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Samofin Connector",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Copies new drawings and documents from Autodesk Docs (Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, logged, hosted in the EU.",
+      "url": "https://samofin.com/",
+      "publisher": { "@id": "https://samofin.com/#org" }
+    }
+  ]
+}
+</script>
 <style>
+@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/fonts/manrope-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/ibm-plex-mono-latin-400.woff2) format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/ibm-plex-mono-latin-500.woff2) format('woff2'); }
 :root {
   --ink: #1B2A41;
   --paper: #F6F5F1;
@@ -57,10 +94,9 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .site-nav a:hover { color: var(--ink); }
 .header-end { display: flex; align-items: center; gap: 18px; }
 .lang { display: flex; border: 1px solid var(--rule); font-family: var(--mono); font-size: 13px; }
-.lang button { margin: 0; padding: 3px 7px; border: 0; background: none; font: inherit; color: var(--muted); cursor: pointer; }
-.lang button:hover { color: var(--ink); }
-.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); cursor: default; }
-.lang button:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+.lang a { padding: 3px 7px; color: var(--muted); text-decoration: none; }
+.lang a:hover { color: var(--ink); }
+.lang a[aria-current="page"] { background: var(--ink); color: var(--paper); }
 .header-mail { font-size: 15px; font-weight: 500; }
 
 /* Sections */
@@ -152,8 +188,8 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
     <div class="inner">
 
       <header class="site-header">
-        <a href="#top" class="brand" aria-label="Samofin Tækni">
-          <img src="samofin-mark.svg" alt="">
+        <a href="/" class="brand" data-i18n-href="url.home" aria-label="Samofin Tækni">
+          <img src="/samofin-mark.svg" alt="">
           <span class="brand-name">Samofin <span>Tækni</span></span>
         </a>
         <nav class="site-nav" aria-label="Sections" data-i18n-aria-label="nav.label">
@@ -164,8 +200,8 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         </nav>
         <div class="header-end">
           <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
-            <button type="button" lang="en" data-lang="en" aria-pressed="true" title="English">EN</button>
-            <button type="button" lang="is" data-lang="is" aria-pressed="false" title="Íslenska">IS</button>
+            <a href="/" hreflang="en" lang="en" title="English" aria-current="page" data-i18n-aria-current="lang.current.en">EN</a>
+            <a href="/is/" hreflang="is" lang="is" title="Íslenska" aria-current="false" data-i18n-aria-current="lang.current.is">IS</a>
           </div>
           <a class="header-mail" href="mailto:hello@samofin.com">hello@samofin.com</a>
         </div>
@@ -180,7 +216,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <section id="problem" class="split">
           <h2 data-i18n="problem.title">Every revision is copied by hand.</h2>
           <div>
-            <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs. Owners increasingly require it as the project web. Contractors run site work and quality control in other systems. Someone copies every new revision across by hand, and outdated drawings end up on site.</p>
+            <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs, part of Autodesk Construction Cloud (ACC). Owners increasingly require it as the project web. Contractors run site work and quality control in other systems. Someone copies every new revision across by hand, and outdated drawings end up on site.</p>
           </div>
         </section>
 
@@ -270,7 +306,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <div class="titleblock">
           <div class="tb-row tb-top">
             <div style="gap:8px;">
-              <img src="samofin-mark.svg" alt="">
+              <img src="/samofin-mark.svg" alt="">
               <div>
                 <div style="font-size:15px;font-weight:600;">Samofin Tækni</div>
                 <div style="font-size:14px;color:var(--muted);" data-i18n="footer.place">Hafnarfjörður, Iceland</div>
@@ -296,102 +332,5 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
     </div>
   </div>
 </div>
-<script>
-(() => {
-  const IS = {
-    'meta.description': 'Samofin Connector afritar nýjar teikningar og skjöl sjálfkrafa úr Autodesk Docs yfir í Procore, AjourBox og SharePoint.',
-    'nav.label': 'Kaflar',
-    'nav.problem': 'Vandinn',
-    'nav.how': 'Hvernig það virkar',
-    'nav.principles': 'Meginreglur',
-    'nav.pricing': 'Verð',
-    'lang.label': 'Tungumál',
-    'hero.title': 'Samofin Connector afritar nýjar teikningar og skjöl úr Autodesk Docs yfir í Procore, AjourBox og SharePoint.',
-    'hero.lede': 'Þú velur hvaða möppum er fylgst með. Hver ný útgáfa er afrituð í samsvarandi möppu í kerfinu sem notað er á verkstað og skráð.',
-    'problem.title': 'Hver endurskoðun er afrituð handvirkt.',
-    'problem.body': 'Arkitektar og verkfræðingar gefa út í Autodesk Docs. Verkkaupar gera það í auknum mæli að kröfu sem verkefnavef. Verktakar stýra framkvæmdum og gæðaeftirliti í öðrum kerfum. Einhver afritar hverja nýja endurskoðun handvirkt á milli, og úreltar teikningar enda á verkstað.',
-    'how.title': 'Einn uppruni, mörg kerfi.',
-    'fig.source': 'UPPRUNI',
-    'fig.readonly': 'lesaðgangur',
-    'fig.copylog': 'afrita · skrá',
-    'fig.caption': 'Mynd 1 · Autodesk Docs → Samofin Connector → Procore / AjourBox / SharePoint',
-    'step.connect.t': 'Tengja',
-    'step.connect.d': 'Kerfisstjórinn ykkar veitir lesaðgang að verkefninu í Autodesk Docs.',
-    'step.map.t': 'Para',
-    'step.map.d': 'Veldu hvaða möppur samstillast við hvaða möppur í ykkar kerfi.',
-    'step.sync.t': 'Samstilla',
-    'step.sync.d': 'Nýjar útgáfur eru afritaðar sjálfkrafa og hvert afrit er skráð.',
-    'principles.title': 'Hvað tengillinn gerir og gerir ekki.',
-    'p.oneway.t': 'Einstefna',
-    'p.oneway.d': 'Les úr upprunanum, skrifar aldrei í hann.',
-    'p.nodelete.t': 'Eyðir aldrei',
-    'p.nodelete.d': 'Fjarlægðar skrár eru merktar, ekki eytt.',
-    'p.logged.t': 'Skráð',
-    'p.logged.d': 'Hver skrá, hver útgáfa, hvenær og hvert.',
-    'p.eu.t': 'Hýst í ESB',
-    'p.eu.d': 'Hýst innan ESB (Google Cloud, Finnlandi).',
-    'pricing.title': 'Gjald á fyrirtæki, svo á verkefni.',
-    'pricing.body': 'Eitt stofngjald á fyrirtæki, síðan fast mánaðargjald fyrir hvert virkt verkefni. Lokin verkefni má setja í geymslu án kostnaðar.',
-    'pricing.cta': 'Fáðu tilboð.',
-    'pricing.href': 'mailto:hello@samofin.com?subject=Tilbo%C3%B0%20%C3%AD%20Samofin%20Connector',
-    'footer.cta': 'Spurningar og tilboð:',
-    'footer.place': 'Hafnarfjörður, Ísland',
-    'tb.contact': 'SAMBAND',
-    'tb.document': 'SKJAL',
-    'tb.rev': 'ÚTG.',
-    'tb.date': 'DAGS.',
-    'tb.scale': 'KVARÐI',
-    'tb.sheet': 'BLAÐ',
-    'tb.status': 'Staða: í þróun, tilraunaverkefni 2026',
-  };
-  const ATTRS = { 'data-i18n': null, 'data-i18n-content': 'content', 'data-i18n-aria-label': 'aria-label', 'data-i18n-href': 'href' };
-
-  // English is the markup itself; remember it so switching back restores it.
-  const targets = [];
-  for (const [marker, attr] of Object.entries(ATTRS)) {
-    for (const el of document.querySelectorAll(`[${marker}]`)) {
-      const key = el.getAttribute(marker);
-      const en = attr ? el.getAttribute(attr) : el.textContent;
-      targets.push({ el, attr, key, en });
-    }
-  }
-
-  function apply(lang) {
-    for (const { el, attr, key, en } of targets) {
-      const value = lang === 'is' ? IS[key] ?? en : en;
-      if (attr) el.setAttribute(attr, value);
-      else el.textContent = value;
-    }
-    document.documentElement.lang = lang;
-    for (const b of document.querySelectorAll('[data-lang]')) {
-      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
-    }
-  }
-
-  function initialLang() {
-    const param = new URLSearchParams(location.search).get('lang');
-    if (param === 'is' || param === 'en') return param;
-    try {
-      const saved = localStorage.getItem('lang');
-      if (saved === 'is' || saved === 'en') return saved;
-    } catch {}
-    return /^is\b/i.test(navigator.language || '') ? 'is' : 'en';
-  }
-
-  document.querySelector('.lang').addEventListener('click', (e) => {
-    const lang = e.target.closest('[data-lang]')?.dataset.lang;
-    if (!lang || lang === document.documentElement.lang) return;
-    apply(lang);
-    try { localStorage.setItem('lang', lang); } catch {}
-    const url = new URL(location.href);
-    if (lang === 'is') url.searchParams.set('lang', 'is');
-    else url.searchParams.delete('lang');
-    history.replaceState(null, '', url);
-  });
-
-  const lang = initialLang();
-  if (lang !== 'en') apply(lang);
-})();
-</script>
 </body>
 </html>
