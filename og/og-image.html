@@ -21,17 +21,22 @@ h1 { margin: 44px 0 0; max-width: 1000px; font-size: 50px; line-height: 1.16; fo
 .edge { width: 64px; height: 1.5px; background: var(--ink); position: relative; margin: 0 8px; }
 .edge::after { content: ""; position: absolute; right: 0; top: -5px; border-left: 9px solid var(--ink); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
 .targets { display: flex; gap: 10px; }
-.meta { display: flex; align-items: center; gap: 28px; }
-.status { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 17px; letter-spacing: 0.06em; }
+.cta-row { display: flex; align-items: center; gap: 28px; margin-top: 40px; }
+.cta { background: var(--ink); color: var(--paper); font-size: 24px; font-weight: 600; padding: 16px 26px; }
+.status { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 19px; letter-spacing: 0.04em; color: var(--muted); }
 .status::before { content: ""; width: 9px; height: 9px; background: var(--teal); }
 </style></head>
 <body>
 <div class="sheet">
   <div class="top">
     <div class="brand"><img src="../src/samofin-mark.svg" alt=""><div>Samofin <span>Tækni</span></div></div>
-    <div class="meta"><div class="status">PILOT 2027</div><div class="url">samofin.com</div></div>
+    <div class="url">samofin.com</div>
   </div>
   <h1>New drawings and documents from Autodesk Docs, copied to Procore, AjourBox and SharePoint automatically.</h1>
+  <div class="cta-row">
+    <div class="cta">Join the pilot →</div>
+    <div class="status">Launching 2027 · pilot places open</div>
+  </div>
   <div class="bottom">
     <div class="flow">
       <div class="box">Autodesk Docs</div>
