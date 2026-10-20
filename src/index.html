@@ -191,11 +191,28 @@ figure[data-state="src"] .dot[data-dot="src"], figure[data-state="tgt"] .dot[dat
 
 figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
 
+/* Problem: Docs vs site versions drifting apart */
+.drift { border: 1px solid var(--ink); background: #FBFAF7; box-shadow: 3px 3px 0 #E2E0D8; }
+.drift-row { display: grid; grid-template-columns: minmax(0, 1fr) 64px 28px 64px 96px; border-top: 1px solid var(--rule); }
+.drift-row > * { display: flex; align-items: center; padding: 10px 12px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+.drift-row > :first-child { display: block; min-width: 0; font-weight: 400; }
+.drift-row > :nth-child(2), .drift-row > :nth-child(5) { border-left: 1px solid var(--rule); }
+.drift-row > :nth-child(3) { padding: 0; border-left: 1px dashed var(--ink); }
+.drift-row > :nth-child(5) { font-size: 12px; font-weight: 400; }
+.drift-row .desc { font-family: 'Manrope', system-ui, sans-serif; font-size: 14px; color: var(--muted); }
+.drift-row .ok { color: var(--muted); }
+.drift-head { border-top: 0; border-bottom: 1px solid var(--ink); }
+.drift-head > * { padding: 8px 12px; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; color: var(--muted); }
+.drift-head + .drift-row { border-top: 0; }
+.stale { background: repeating-linear-gradient(135deg, transparent 0 5px, rgba(27, 42, 65, 0.13) 5px 6px); }
+.sw-hand { width: 14px; border-top: 1px dashed var(--ink); }
+.sw-stale { width: 14px; height: 10px; border: 1px solid var(--rule); }
+
 /* Files: folder mapping and version history */
 .dot { flex: none; width: 6px; height: 6px; background: var(--teal); }
 .muted { color: var(--muted); }
-.files-fig { margin-top: 36px; }
-.files-fig figcaption { margin-top: 12px; }
+.fig-block { margin-top: 36px; }
+.fig-block figcaption { margin-top: 12px; }
 .trees, .vh { font-family: var(--mono); font-size: 13px; line-height: 1.5; }
 .trees { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
 .tree { min-width: 0; background: var(--paper); }
@@ -207,7 +224,7 @@ figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color:
 .tree-body .p { white-space: pre; }
 .tree-body .ver { margin-left: auto; padding-left: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 10px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
-.legend > span:first-child { display: flex; align-items: center; gap: 8px; }
+.legend > span { display: flex; align-items: center; gap: 8px; }
 .vh { margin-top: 32px; border: 1px solid var(--ink); }
 .vh-head { border-bottom: 1px solid var(--ink); }
 .vh-row { display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.2fr); gap: 0 16px; padding: 8px 12px; border-top: 1px solid var(--rule); }
@@ -293,6 +310,19 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <h2 data-i18n="problem.title">Manual copying puts old drawings on site.</h2>
           <div>
             <p data-i18n="problem.body">Architects and engineers publish in Autodesk Docs, part of Autodesk Construction Cloud (ACC) and increasingly the common data environment (CDE) owners require. Site work and quality control run in Procore, AjourBox or SharePoint. So someone copies every revision across by hand. It takes time every week, and one missed revision means building from an outdated drawing.</p>
+            <figure class="fig-block">
+              <div class="drift">
+                <div class="drift-row drift-head"><span data-i18n="drift.drawing">DRAWING</span><span>DOCS</span><span></span><span data-i18n="drift.site">SITE</span><span></span></div>
+                <div class="drift-row"><div><div>S-101</div><div class="desc">Foundation plan</div></div><span>V4</span><span></span><span class="stale">V2</span><span data-i18n="drift.behind2">2 behind</span></div>
+                <div class="drift-row"><div><div>S-201</div><div class="desc">Sections</div></div><span>V3</span><span></span><span>V3</span><span class="ok" data-i18n="drift.current">current</span></div>
+                <div class="drift-row"><div><div>A-110</div><div class="desc">Floor plan, level 1</div></div><span>V6</span><span></span><span class="stale">V5</span><span data-i18n="drift.behind1">1 behind</span></div>
+              </div>
+              <div class="legend">
+                <span><span class="sw-hand"></span><span data-i18n="drift.legend.hand">copied by hand</span></span>
+                <span><span class="sw-stale stale"></span><span data-i18n="drift.legend.stale">outdated on site</span></span>
+              </div>
+              <figcaption data-i18n="drift.caption">Fig. 1 · Example. Docs has the latest revision; the site system has whatever was last copied across.</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -347,7 +377,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 </div>
               </div>
 
-              <figcaption data-i18n="fig.caption">Fig. 1 · A new version of S-101 in Autodesk Docs is copied to each target and logged.</figcaption>
+              <figcaption data-i18n="fig.caption">Fig. 2 · A new version of S-101 in Autodesk Docs is copied to each target and logged.</figcaption>
             </figure>
 
             <ol class="rows steps">
@@ -364,7 +394,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <div>
             <p data-i18n="files.body">A folder in Autodesk Docs is mapped to a folder in the target system. Each new version is copied into it, and the log shows which version was copied, when, and where to.</p>
 
-            <figure class="files-fig">
+            <figure class="fig-block">
               <div class="trees">
                 <div class="tree">
                   <div class="tree-head"><span class="label" data-i18n="files.src">SOURCE · AUTODESK DOCS</span><span class="mode" data-i18n="files.read">read</span></div>
@@ -402,7 +432,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 <div class="vh-row"><span>V2</span><span>2026-09-12 11:06</span><span>Drawings/Structural</span></div>
                 <div class="vh-row"><span>V1</span><span>2026-08-28 08:31</span><span>Drawings/Structural</span></div>
               </div>
-              <figcaption data-i18n="files.caption">Fig. 2 · Example. Folder names, files and dates are illustrative.</figcaption>
+              <figcaption data-i18n="files.caption">Fig. 3 · Example. Folder names, files and dates are illustrative.</figcaption>
             </figure>
           </div>
         </section>
