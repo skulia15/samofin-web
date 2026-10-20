@@ -215,6 +215,30 @@ figure { margin: 0; container-type: inline-size; }
 
 figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
 
+/* Files: folder mapping and version history */
+.dot { flex: none; width: 6px; height: 6px; background: var(--teal); }
+.muted { color: var(--muted); }
+.files-fig { margin-top: 36px; }
+.files-fig figcaption { margin-top: 12px; }
+.trees, .vh { font-family: var(--mono); font-size: 13px; line-height: 1.5; }
+.trees { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
+.tree { min-width: 0; background: var(--paper); }
+.tree-head, .vh-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 8px 12px; }
+.tree-head { border-bottom: 1px solid var(--rule); }
+.tree-head .mode { font-size: 12px; color: var(--muted); }
+.tree-body { padding: 10px 12px 12px; overflow-x: auto; }
+.tree-body > div { display: flex; align-items: center; gap: 8px; }
+.tree-body .p { white-space: pre; }
+.tree-body .ver { margin-left: auto; padding-left: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 10px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.legend > span:first-child { display: flex; align-items: center; gap: 8px; }
+.vh { margin-top: 32px; border: 1px solid var(--ink); }
+.vh-head { border-bottom: 1px solid var(--ink); }
+.vh-row { display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.2fr); gap: 0 16px; padding: 8px 12px; border-top: 1px solid var(--rule); }
+.vh-row.cols { padding: 6px 12px; border-top: 0; }
+.vh-row > span:last-child { overflow-wrap: anywhere; }
+.vh-row .now { display: flex; align-items: center; gap: 6px; }
+
 /* Steps & principles */
 .rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
 .rows > li, .rows > div { display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 16px 0; border-top: 1px solid var(--rule); }
@@ -265,6 +289,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <nav class="site-nav" aria-label="Sections" data-i18n-aria-label="nav.label">
           <a href="#problem" data-i18n="nav.problem">Problem</a>
           <a href="#how" data-i18n="nav.how">How it works</a>
+          <a href="#files" data-i18n="nav.files">Files</a>
           <a href="#principles" data-i18n="nav.principles">Principles</a>
           <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
           <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -355,6 +380,54 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
               <li><span class="n">3</span><span class="t" data-i18n="step.review.t">Review</span><span class="d" data-i18n="step.review.d">Before anything is copied, you review a dry run showing exactly what will be created.</span></li>
               <li><span class="n">4</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">New versions are copied automatically, and every copy is logged.</span></li>
             </ol>
+          </div>
+        </section>
+
+        <section id="files" class="split">
+          <h2 data-i18n="files.title">Same folders, every version.</h2>
+          <div>
+            <p data-i18n="files.body">A folder in Autodesk Docs is mapped to a folder in the target system. Each new version is copied into it, and the log shows which version was copied, when, and where to.</p>
+
+            <figure class="files-fig">
+              <div class="trees">
+                <div class="tree">
+                  <div class="tree-head"><span class="label" data-i18n="files.src">SOURCE · AUTODESK DOCS</span><span class="mode" data-i18n="files.read">read</span></div>
+                  <div class="tree-body">
+                    <div><span class="p">Project Files</span></div>
+                    <div class="muted"><span class="p">├─ 01_Arch</span></div>
+                    <div><span class="p">├─ 02_Struct</span><span class="dot"></span></div>
+                    <div><span class="p">│  ├─ S-101 Foundation plan.pdf</span><span class="ver">V4</span></div>
+                    <div><span class="p">│  └─ S-201 Sections.pdf</span><span class="ver">V2</span></div>
+                    <div class="muted"><span class="p">└─ 03_Mech</span></div>
+                  </div>
+                </div>
+                <div class="tree">
+                  <div class="tree-head"><span class="label" data-i18n="files.tgt">TARGET SYSTEM</span><span class="mode" data-i18n="files.write">write</span></div>
+                  <div class="tree-body">
+                    <div><span class="p">Documents</span></div>
+                    <div><span class="p">└─ Drawings</span></div>
+                    <div><span class="p">   └─ Structural</span><span class="dot"></span></div>
+                    <div><span class="p">      ├─ S-101 Foundation plan.pdf</span><span class="ver">V4</span></div>
+                    <div><span class="p">      ├─ S-201 Sections.pdf</span><span class="ver">V2</span></div>
+                    <div class="muted"><span class="p">      └─ <s>S-150 Pile layout.pdf</s></span><span class="ver" data-i18n="files.flagged">flagged</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="legend">
+                <span><span class="dot"></span><span data-i18n="files.legend.mapped">mapped folder</span></span>
+                <span data-i18n="files.legend.flagged">flagged: removed in source, kept in target</span>
+              </div>
+
+              <div class="vh">
+                <div class="vh-head"><span class="label" data-i18n="files.history">VERSION HISTORY</span><span>S-101 Foundation plan.pdf</span></div>
+                <div class="vh-row cols label"><span data-i18n="files.col.ver">VER</span><span data-i18n="files.col.copied">COPIED</span><span data-i18n="files.col.to">TO</span></div>
+                <div class="vh-row"><span class="now">V4<span class="dot"></span></span><span>2026-10-14 09:12</span><span>Drawings/Structural</span></div>
+                <div class="vh-row"><span>V3</span><span>2026-09-30 15:41</span><span>Drawings/Structural</span></div>
+                <div class="vh-row"><span>V2</span><span>2026-09-12 11:06</span><span>Drawings/Structural</span></div>
+                <div class="vh-row"><span>V1</span><span>2026-08-28 08:31</span><span>Drawings/Structural</span></div>
+              </div>
+              <figcaption data-i18n="files.caption">Fig. 2 · Example. Folder names, files and dates are illustrative.</figcaption>
+            </figure>
           </div>
         </section>
 
