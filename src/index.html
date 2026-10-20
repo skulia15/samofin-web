@@ -189,6 +189,13 @@ figure { margin: 0; container-type: inline-size; }
   12% { opacity: 1; transform: var(--to); }
   12.01%, 100% { opacity: 0; transform: var(--to); }
 }
+/* Middle branch has no corner to turn, so it runs both outer legs' time to land with them. */
+.pk.slow { animation-name: pk-slow; }
+@keyframes pk-slow {
+  0% { opacity: 1; transform: none; }
+  24% { opacity: 1; transform: var(--to); }
+  24.01%, 100% { opacity: 0; transform: var(--to); }
+}
 .hub .label::before { animation: hub 5s ease-out 0.6s infinite; }
 @keyframes hub {
   0%, 12%, 100% { transform: none; }
@@ -309,12 +316,12 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                   <span class="pk up" style="left:45%;top:22px;width:1px;height:58px;--d:1.8s;"></span>
                   <span class="pk down" style="left:45%;top:80px;width:1px;height:59px;--d:1.8s;"></span>
                   <span class="line arrow-r" style="left:45%;right:0;top:22px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"><span class="pk" style="--d:1.8s;"></span></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"><span class="pk slow" style="--d:1.8s;"></span></span>
                   <span class="line arrow-r" style="left:45%;right:0;top:138px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
                 </div>
                 <div class="targets">
                   <div class="box" style="--d:3s;">Procore</div>
-                  <div class="box" style="--d:2.4s;">AjourBox</div>
+                  <div class="box" style="--d:3s;">AjourBox</div>
                   <div class="box" style="--d:3s;">SharePoint</div>
                 </div>
               </div>
@@ -334,7 +341,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 <div class="bus"><span class="pk left" style="left:16.666%;width:33.334%;--d:1.8s;"></span><span class="pk" style="left:50%;width:33.334%;--d:1.8s;"></span></div>
                 <div class="targets">
                   <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">Procore</div></div>
-                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:1.8s;"></span></div><div class="box" style="--d:2.4s;">AjourBox</div></div>
+                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down slow" style="--d:1.8s;"></span></div><div class="box" style="--d:3s;">AjourBox</div></div>
                   <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">SharePoint</div></div>
                 </div>
               </div>
