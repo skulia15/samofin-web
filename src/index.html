@@ -138,80 +138,56 @@ dl.rows.faq dt { flex: 1 1 100%; font-family: inherit; font-size: 17px; line-hei
 dl.rows.faq dd { flex-basis: 100%; }
 .split p.pricing-cta { margin-top: 28px; }
 
-/* Diagram: wide/narrow swap at 580px container width */
+/* Diagram: wide/narrow swap at 600px container width */
 figure { margin: 0; container-type: inline-size; }
-.box { border: 1px solid var(--ink); background: var(--paper); padding: 10px 12px; }
-.box-title { margin-top: 4px; font-size: 15px; font-weight: 600; }
-.box.hub { outline: 1px solid var(--ink); outline-offset: 3px; }
-.hub .label { display: flex; align-items: center; gap: 6px; }
-.hub .label::before { content: ""; width: 6px; height: 6px; background: var(--teal); }
-.hub-sub { margin-top: 2px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.card { border: 1px solid var(--ink); background: #FBFAF7; box-shadow: 3px 3px 0 #E2E0D8; }
+.card-head { display: flex; justify-content: space-between; gap: 8px; padding: 6px 12px; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+.card-name { display: flex; align-items: center; gap: 10px; padding: 12px 12px 6px; font-size: 15px; font-weight: 600; line-height: 1.2; }
+.card-sub { display: flex; align-items: center; gap: 6px; padding: 0 12px 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.ic { flex: none; width: 24px; height: 24px; object-fit: contain; display: block; }
+.card.hub { background: var(--ink); color: var(--paper); }
+.hub .card-head { border-bottom-color: #3A4A63; color: #B9C1CC; }
+.hub .card-head span { display: flex; align-items: center; gap: 6px; }
+.hub .card-head span::before { content: ""; width: 6px; height: 6px; background: var(--teal); }
+.hub .card-name { font-size: 16px; }
+.hub .card-sub { color: #B9C1CC; }
+.tgt .ic { width: 22px; height: 22px; }
+.tgt .card-sub { padding: 0; }
 .line { position: absolute; background: var(--ink); }
 .arrow-r::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 7px solid var(--ink); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
 .arrow-d::after { content: ""; position: absolute; bottom: 0; left: -4px; border-top: 7px solid var(--ink); border-left: 4.5px solid transparent; border-right: 4.5px solid transparent; }
 
 .dia-wide { display: flex; align-items: center; }
-.dia-wide > .box:first-child { flex: 0 0 140px; }
-.dia-wide > .hub { flex: 0 0 160px; box-sizing: border-box; }
-.dia-wide .edge { flex: 1 1 60px; position: relative; height: 1px; background: var(--ink); }
-.dia-wide .edge .mono { position: absolute; left: 0; right: 0; bottom: 8px; text-align: center; font-size: 12px; color: var(--muted); }
-.dia-wide .fan { flex: 1 1 80px; position: relative; height: 160px; }
-.dia-wide .targets { flex: 0 0 130px; display: flex; flex-direction: column; gap: 14px; }
-.dia-wide .targets .box { height: 44px; box-sizing: border-box; padding: 0 12px; display: flex; align-items: center; font-size: 15px; font-weight: 600; }
+.dia-wide > .card:first-child { flex: 0 0 160px; }
+.dia-wide > .hub { flex: 0 0 178px; }
+.dia-wide .edge { flex: 1 1 56px; position: relative; height: 1px; background: var(--ink); }
+.dia-wide .edge .mono { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+.dia-wide .fan { flex: 1 1 72px; position: relative; height: 180px; }
+.dia-wide .targets { flex: 0 0 164px; display: flex; flex-direction: column; gap: 12px; }
+.dia-wide .tgt { height: 52px; box-sizing: border-box; padding: 0 12px; display: flex; align-items: center; gap: 10px; }
+.dia-wide .tgt .name { flex: 1; font-size: 15px; font-weight: 600; }
 
 .dia-narrow { display: none; flex-direction: column; }
-.dia-narrow .hub { margin: 4px; }
 .dia-narrow .vline { align-self: center; position: relative; width: 1px; background: var(--ink); }
-.dia-narrow .vline .mono { position: absolute; left: 12px; top: 13px; white-space: nowrap; font-size: 12px; color: var(--muted); }
+.dia-narrow .vline .mono { position: absolute; left: 20px; top: 15px; white-space: nowrap; font-size: 12px; color: var(--muted); }
 .dia-narrow .bus { position: relative; height: 1px; }
 .dia-narrow .bus::before { content: ""; position: absolute; left: 16.666%; right: 16.666%; top: 0; height: 1px; background: var(--ink); }
 .dia-narrow .targets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .dia-narrow .targets > div { display: flex; flex-direction: column; align-items: center; padding: 0 4px; }
-.dia-narrow .targets .box { width: 100%; box-sizing: border-box; padding: 10px 4px; text-align: center; font-size: 13px; font-weight: 600; }
+.dia-narrow .tgt { width: 100%; box-sizing: border-box; padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.dia-narrow .tgt .name { font-size: 13px; font-weight: 600; }
 
-@container (max-width: 579.98px) {
+@container (max-width: 599.98px) {
   .dia-wide { display: none; }
   .dia-narrow { display: flex; }
 }
 
-/* Diagram motion: a document packet runs each segment in turn, all on one 5s
-   cycle sequenced by --d. A .pk overlays its line, so translate(100%) of its
-   own box is exactly the segment length at any width. */
-.pk { position: absolute; inset: 0; pointer-events: none; opacity: 0; --to: translateX(100%); animation: pk 5s linear var(--d, 0s) infinite; }
-.pk::before { content: ""; position: absolute; left: -2px; top: -2px; width: 5px; height: 5px; background: var(--teal); }
-.pk.down { --to: translateY(100%); }
-.pk.left { --to: translateX(-100%); }
-.pk.left::before { left: auto; right: -3px; }
-.pk.up { --to: translateY(-100%); }
-.pk.up::before { top: auto; bottom: -3px; }
-@keyframes pk {
-  0% { opacity: 1; transform: none; }
-  12% { opacity: 1; transform: var(--to); }
-  12.01%, 100% { opacity: 0; transform: var(--to); }
-}
-/* Middle branch has no corner to turn, so it runs both outer legs' time to land with them. */
-.pk.slow { animation-name: pk-slow; }
-@keyframes pk-slow {
-  0% { opacity: 1; transform: none; }
-  24% { opacity: 1; transform: var(--to); }
-  24.01%, 100% { opacity: 0; transform: var(--to); }
-}
-.hub .label::before { animation: hub 5s ease-out 0.6s infinite; }
-@keyframes hub {
-  0%, 12%, 100% { transform: none; }
-  4% { transform: scale(1.8); }
-}
-.targets .box { position: relative; }
-.targets .box::after { content: ""; position: absolute; top: 6px; right: 6px; width: 5px; height: 5px; background: var(--teal); opacity: 0; animation: tick 5s ease-out var(--d, 0s) infinite; }
-@keyframes tick {
-  0% { opacity: 0; transform: scale(0.3); }
-  3%, 30% { opacity: 1; transform: none; }
-  36%, 100% { opacity: 0; transform: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pk, .targets .box::after { display: none; }
-  .hub .label::before { animation: none; }
-}
+/* Diagram motion (script at end of body): a version chip flies source → connector → targets,
+   and the teal dot marks where the newest version currently sits. */
+.tok { position: absolute; top: 0; left: 12%; transform: translate(-50%, -50%); opacity: 0; padding: 0 6px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 12px; line-height: 18px; white-space: nowrap; z-index: 1; pointer-events: none; }
+.vline .tok { left: 0; top: 12%; }
+.dot[data-dot] { opacity: 0; transition: opacity 300ms; }
+figure[data-state="src"] .dot[data-dot="src"], figure[data-state="tgt"] .dot[data-dot="tgt"] { opacity: 1; }
 
 figcaption { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
 
@@ -325,53 +301,53 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <div>
             <figure>
               <div class="dia-wide" aria-hidden="true">
-                <div class="box">
-                  <div class="label" data-i18n="fig.source">SOURCE</div>
-                  <div class="box-title">Autodesk Docs</div>
+                <div class="card">
+                  <div class="card-head"><span data-i18n="fig.source">SOURCE</span><span data-i18n="fig.read">READ</span></div>
+                  <div class="card-name"><img class="ic" src="/icons/autodesk-forma.svg" alt="" width="24" height="24">Autodesk Docs</div>
+                  <div class="card-sub">S-101 <span data-v="src">V4</span><span class="dot" data-dot="src"></span></div>
                 </div>
-                <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk"></span></div>
-                <div class="box hub">
-                  <div class="label">SAMOFIN</div>
-                  <div class="box-title" data-i18n="fig.hub">Connector</div>
-                  <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
+                <div class="edge arrow-r"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="tok" data-tok="1" data-v="src">V4</span></div>
+                <div class="card hub">
+                  <div class="card-head"><span>SAMOFIN TÆKNI</span></div>
+                  <div class="card-name"><img class="ic" src="/icons/samofin-mark-light.svg" alt="" width="24" height="24"><span data-i18n="fig.hub">Connector</span></div>
+                  <div class="card-sub"><span data-i18n="fig.copylog">copy · log</span> · <span data-v="log">V4</span></div>
                 </div>
                 <div class="fan">
-                  <span class="line" style="left:0;width:45%;top:80px;height:1px;"><span class="pk" style="--d:1.2s;"></span></span>
-                  <span class="line" style="left:45%;top:22px;width:1px;height:117px;"></span>
-                  <span class="pk up" style="left:45%;top:22px;width:1px;height:58px;--d:1.8s;"></span>
-                  <span class="pk down" style="left:45%;top:80px;width:1px;height:59px;--d:1.8s;"></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:22px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:80px;height:1px;"><span class="pk slow" style="--d:1.8s;"></span></span>
-                  <span class="line arrow-r" style="left:45%;right:0;top:138px;height:1px;"><span class="pk" style="--d:2.4s;"></span></span>
+                  <span class="line" style="left:0;width:45%;top:90px;height:1px;"></span>
+                  <span class="line" style="left:45%;top:26px;width:1px;height:129px;"></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:26px;height:1px;"><span class="tok" data-tok="2" data-v="src">V4</span></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:90px;height:1px;"><span class="tok" data-tok="2" data-v="src">V4</span></span>
+                  <span class="line arrow-r" style="left:45%;right:0;top:154px;height:1px;"><span class="tok" data-tok="2" data-v="src">V4</span></span>
                 </div>
                 <div class="targets">
-                  <div class="box" style="--d:3s;">Procore</div>
-                  <div class="box" style="--d:3s;">AjourBox</div>
-                  <div class="box" style="--d:3s;">SharePoint</div>
+                  <div class="card tgt"><img class="ic" src="/icons/procore.png" alt="" width="22" height="22"><span class="name">Procore</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div>
+                  <div class="card tgt"><img class="ic" src="/icons/eg-ajour.svg" alt="" width="22" height="22"><span class="name">AjourBox</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div>
+                  <div class="card tgt"><img class="ic" src="/icons/sharepoint.svg" alt="" width="22" height="22"><span class="name">SharePoint</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div>
                 </div>
               </div>
 
               <div class="dia-narrow" aria-hidden="true">
-                <div class="box">
-                  <div class="label" data-i18n="fig.source">SOURCE</div>
-                  <div class="box-title">Autodesk Docs</div>
+                <div class="card">
+                  <div class="card-head"><span data-i18n="fig.source">SOURCE</span><span data-i18n="fig.read">READ</span></div>
+                  <div class="card-name"><img class="ic" src="/icons/autodesk-forma.svg" alt="" width="24" height="24">Autodesk Docs</div>
+                  <div class="card-sub">S-101 <span data-v="src">V4</span><span class="dot" data-dot="src"></span></div>
                 </div>
-                <div class="vline arrow-d" style="height:40px;"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="pk down"></span></div>
-                <div class="box hub">
-                  <div class="label">SAMOFIN</div>
-                  <div class="box-title" data-i18n="fig.hub">Connector</div>
-                  <div class="hub-sub" data-i18n="fig.copylog">copy · log</div>
+                <div class="vline arrow-d" style="height:48px;"><span class="mono" data-i18n="fig.readonly">read-only</span><span class="tok" data-tok="1" data-v="src">V4</span></div>
+                <div class="card hub">
+                  <div class="card-head"><span>SAMOFIN TÆKNI</span></div>
+                  <div class="card-name"><img class="ic" src="/icons/samofin-mark-light.svg" alt="" width="24" height="24"><span data-i18n="fig.hub">Connector</span></div>
+                  <div class="card-sub"><span data-i18n="fig.copylog">copy · log</span> · <span data-v="log">V4</span></div>
                 </div>
-                <div class="vline" style="height:20px;"><span class="pk down" style="--d:1.2s;"></span></div>
-                <div class="bus"><span class="pk left" style="left:16.666%;width:33.334%;--d:1.8s;"></span><span class="pk" style="left:50%;width:33.334%;--d:1.8s;"></span></div>
+                <div class="vline" style="height:20px;"></div>
+                <div class="bus"></div>
                 <div class="targets">
-                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">Procore</div></div>
-                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down slow" style="--d:1.8s;"></span></div><div class="box" style="--d:3s;">AjourBox</div></div>
-                  <div><div class="vline arrow-d" style="height:24px;"><span class="pk down" style="--d:2.4s;"></span></div><div class="box" style="--d:3s;">SharePoint</div></div>
+                  <div><div class="vline arrow-d" style="height:40px;"><span class="tok" data-tok="2" data-v="src">V4</span></div><div class="card tgt"><img class="ic" src="/icons/procore.png" alt="" width="22" height="22"><span class="name">Procore</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div></div>
+                  <div><div class="vline arrow-d" style="height:40px;"><span class="tok" data-tok="2" data-v="src">V4</span></div><div class="card tgt"><img class="ic" src="/icons/eg-ajour.svg" alt="" width="22" height="22"><span class="name">AjourBox</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div></div>
+                  <div><div class="vline arrow-d" style="height:40px;"><span class="tok" data-tok="2" data-v="src">V4</span></div><div class="card tgt"><img class="ic" src="/icons/sharepoint.svg" alt="" width="22" height="22"><span class="name">SharePoint</span><span class="card-sub"><span class="dot" data-dot="tgt"></span><span data-v="tgt">V4</span></span></div></div>
                 </div>
               </div>
 
-              <figcaption data-i18n="fig.caption">Fig. 1 · Autodesk Docs → Samofin Connector → Procore / AjourBox / SharePoint</figcaption>
+              <figcaption data-i18n="fig.caption">Fig. 1 · A new version of S-101 in Autodesk Docs is copied to each target and logged.</figcaption>
             </figure>
 
             <ol class="rows steps">
@@ -506,5 +482,40 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
     </div>
   </div>
 </div>
+<script>
+// Fig. 1 motion: while the diagram is on screen, each cycle bumps S-101's version in the
+// source, flies it to the connector, logs it, then fans it out to every target.
+(() => {
+  const fig = document.querySelector('#how figure');
+  if (!fig || !fig.animate || !window.IntersectionObserver || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let v = 4, visible = false, running = false;
+  const at = (ms, fn) => setTimeout(fn, ms);
+  const set = (k) => fig.querySelectorAll(`[data-v="${k}"]`).forEach((el) => { el.textContent = `V${v}`; });
+  const fly = (n, duration) => fig.querySelectorAll(`[data-tok="${n}"]`).forEach((el) => {
+    if (!el.offsetParent) return; // in the hidden wide/narrow variant
+    const ax = el.closest('.vline') ? 'top' : 'left';
+    el.animate([
+      { [ax]: '12%', opacity: 0 },
+      { opacity: 1, offset: 0.12 },
+      { opacity: 1, offset: 0.85 },
+      { [ax]: '86%', opacity: 0 },
+    ], { duration, easing: 'cubic-bezier(.45,0,.25,1)' });
+  });
+  const cycle = () => {
+    if (!visible) { running = false; return; }
+    v = v >= 9 ? 1 : v + 1;
+    set('src'); fig.dataset.state = 'src';
+    at(600, () => fly(1, 1100));
+    at(1700, () => set('log'));
+    at(1950, () => fly(2, 1000));
+    at(2950, () => { set('tgt'); fig.dataset.state = 'tgt'; });
+    at(6200, cycle);
+  };
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !running) { running = true; at(400, cycle); }
+  }, { threshold: 0.4 }).observe(fig);
+})();
+</script>
 </body>
 </html>
