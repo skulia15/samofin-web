@@ -134,6 +134,7 @@ section { border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
 .cta { display: inline-block; padding: 11px 18px; background: var(--ink); color: var(--paper); font-weight: 600; font-size: 16px; text-decoration: none; }
 .cta:hover { color: var(--paper); background: #24365A; }
 .cta:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.explainer { display: block; width: 100%; max-width: 760px; height: auto; margin-top: 44px; border: 1px solid var(--ink); background: var(--paper); box-shadow: 3px 3px 0 #E2E0D8; }
 dl.rows.faq dt { flex: 1 1 100%; font-family: inherit; font-size: 17px; line-height: 1.5; font-weight: 600; letter-spacing: 0; text-transform: none; }
 dl.rows.faq dd { flex-basis: 100%; }
 .split p.pricing-cta { margin-top: 28px; }
@@ -304,6 +305,9 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
             <!--email_off--><a class="cta" href="mailto:hello@samofin.com?subject=Samofin%20Connector%20pilot&amp;body=Hi%2C%0D%0A%0D%0AWe%27d%20like%20to%20join%20the%20Samofin%20Connector%20pilot.%0D%0A%0D%0ACompany%3A%20%0D%0ATarget%20system%20%28Procore%20%2F%20AjourBox%20%2F%20SharePoint%29%3A%20%0D%0AProject%20we%27d%20start%20with%3A%20%0D%0AWhen%20we%27d%20like%20to%20start%3A%20%0D%0A%0D%0ABest%20regards%2C%0D%0A" data-i18n="hero.cta" data-i18n-href="hero.cta.href">Join the pilot</a><!--/email_off-->
             <span class="label" data-i18n="hero.status">Launching 2027 · pilot places open</span>
           </div>
+          <video class="explainer" controls playsinline preload="none" width="1280" height="720" poster="/samofin-construction-sync-poster.jpg" aria-label="Explainer video: how Samofin Connector works (30 seconds)" data-i18n-aria-label="hero.video.label">
+            <source src="/samofin-construction-sync.mp4" type="video/mp4">
+          </video>
         </section>
 
         <section id="problem" class="split">
