@@ -3,6 +3,8 @@
 //   data-i18n="key"        replaces the element's text (plain text only, no nested tags)
 //   data-i18n-<attr>="key" replaces that attribute's value
 // Markers are stripped from the output. Translations live in src/is.json.
+// __BUILD_DATE__ in index.html and sitemap.xml becomes the last commit date.
+import { execSync } from 'node:child_process';
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 const SRC = 'src';
@@ -10,6 +12,23 @@ const DIST = 'dist';
 
 const template = readFileSync(`${SRC}/index.html`, 'utf8');
 const is = JSON.parse(readFileSync(`${SRC}/is.json`, 'utf8'));
+
+// English strings that live outside the HTML template (site JSON-LD). Icelandic overrides them.
+const en = {
+  'jsonld.app.description':
+    'Copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, fully logged, hosted in the EU.',
+  'jsonld.founder.jobTitle': 'Software developer',
+};
+
+// Footer title block and sitemap <lastmod>: date of the last commit, or today when not in git.
+const buildDate = (() => {
+  try {
+    return execSync('git log -1 --format=%cs', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {
+    return new Date().toISOString().slice(0, 10);
+  }
+})();
+if (!/^\d{4}-\d{2}-\d{2}$/.test(buildDate)) throw new Error(`bad build date: ${buildDate}`);
 
 const TEXT_RE = /<(\w+)([^>]*?)\sdata-i18n="([^"]+)"([^>]*)>([^<]*)<\/\1>/g;
 const TAG_RE = /<[a-z][^>]*\sdata-i18n-[^>]*>/g;
@@ -24,6 +43,7 @@ for (const m of template.matchAll(TEXT_RE)) used.add(m[3]);
 for (const tag of template.match(TAG_RE) ?? []) {
   for (const m of tag.matchAll(ATTR_MARKER_RE)) used.add(m[2]);
 }
+for (const k of Object.keys(en)) used.add(k);
 const missing = [...used].filter((k) => !(k in is));
 const unused = Object.keys(is).filter((k) => !used.has(k));
 if (missing.length || unused.length) {
@@ -45,7 +65,59 @@ function render(dict) {
     return tag.replace(ATTR_MARKER_RE, '');
   });
   if (html.includes('data-i18n')) throw new Error('unprocessed data-i18n marker');
-  return html.replace('<!--faq-jsonld-->', faqJsonLd(html));
+  if (!html.includes('__BUILD_DATE__')) throw new Error('no __BUILD_DATE__ token');
+  return html
+    .replaceAll('__BUILD_DATE__', buildDate)
+    .replace('<!--site-jsonld-->', () => siteJsonLd(dict ?? en))
+    .replace('<!--faq-jsonld-->', () => faqJsonLd(html));
+}
+
+const jsonLdScript = (data) =>
+  `<script type="application/ld+json">\n${JSON.stringify(data, null, 2).replace(/</g, '\\u003c')}\n</script>`;
+
+// WebSite, Organization and SoftwareApplication. Same on both pages apart from the translated strings.
+function siteJsonLd(dict) {
+  return jsonLdScript({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': 'https://samofin.com/#website',
+        name: 'Samofin Tækni',
+        alternateName: ['Samofin', 'samofin.com'],
+        url: 'https://samofin.com/',
+        inLanguage: ['en', 'is'],
+        publisher: { '@id': 'https://samofin.com/#org' },
+      },
+      {
+        '@type': 'Organization',
+        '@id': 'https://samofin.com/#org',
+        name: 'Samofin Tækni',
+        url: 'https://samofin.com/',
+        logo: 'https://samofin.com/apple-touch-icon.png',
+        email: 'hello@samofin.com',
+        sameAs: ['https://www.linkedin.com/company/145330138/'],
+        founder: {
+          '@type': 'Person',
+          name: 'Skúli Arnarsson',
+          jobTitle: dict['jsonld.founder.jobTitle'],
+          email: 'skuli@samofin.com',
+          sameAs: ['https://www.linkedin.com/in/skulipardus/'],
+        },
+        address: { '@type': 'PostalAddress', addressLocality: 'Hafnarfjörður', addressCountry: 'IS' },
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: 'Samofin Connector',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        description: dict['jsonld.app.description'],
+        url: dict['url.self'] ?? 'https://samofin.com/',
+        inLanguage: dict['lang'] ?? 'en',
+        publisher: { '@id': 'https://samofin.com/#org' },
+      },
+    ],
+  });
 }
 
 // FAQPage structured data built from the rendered #faq section, so it always matches the page.
@@ -60,16 +132,16 @@ function faqJsonLd(html) {
     acceptedAnswer: { '@type': 'Answer', text: unescape(a) },
   }));
   if (!mainEntity.length) throw new Error('no FAQ entries found');
-  const json = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity }, null, 2);
-  return `<script type="application/ld+json">\n${json.replace(/</g, '\\u003c')}\n</script>`;
+  return jsonLdScript({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity });
 }
 
 rmSync(DIST, { recursive: true, force: true });
 cpSync(SRC, DIST, {
   recursive: true,
-  filter: (path) => ![`${SRC}/index.html`, `${SRC}/is.json`].includes(path),
+  filter: (path) => ![`${SRC}/index.html`, `${SRC}/is.json`, `${SRC}/sitemap.xml`].includes(path),
 });
+writeFileSync(`${DIST}/sitemap.xml`, readFileSync(`${SRC}/sitemap.xml`, 'utf8').replaceAll('__BUILD_DATE__', buildDate));
 writeFileSync(`${DIST}/index.html`, render(null));
 mkdirSync(`${DIST}/is`, { recursive: true });
 writeFileSync(`${DIST}/is/index.html`, render(is));
-console.log(`built ${DIST}/index.html and ${DIST}/is/index.html (${used.size} keys)`);
+console.log(`built ${DIST}/index.html and ${DIST}/is/index.html (${used.size} keys, date ${buildDate})`);

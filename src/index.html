@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="meta.title">Autodesk Forma (ACC) to Procore, AjourBox &amp; SharePoint – Samofin</title>
-<meta name="description" data-i18n-content="meta.description" content="Update once in Autodesk Forma, updated everywhere. Samofin Connector copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, ACC) to Procore, AjourBox and SharePoint.">
+<meta name="description" data-i18n-content="meta.description" content="Update once in Autodesk Forma, updated everywhere. Samofin Connector copies new drawings, models and documents to Procore, AjourBox and SharePoint.">
 <meta name="theme-color" content="#F6F5F1">
 <link rel="canonical" href="https://samofin.com/" data-i18n-href="url.self">
 <link rel="alternate" hreflang="en" href="https://samofin.com/">
@@ -15,12 +15,12 @@
 <meta property="og:locale" content="en_GB" data-i18n-content="og.locale">
 <meta property="og:locale:alternate" content="is_IS" data-i18n-content="og.locale.alternate">
 <meta property="og:title" content="Autodesk Forma (ACC) to Procore, AjourBox &amp; SharePoint – Samofin" data-i18n-content="meta.title">
-<meta property="og:description" content="Update once in Autodesk Forma, updated everywhere. Samofin Connector copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, ACC) to Procore, AjourBox and SharePoint." data-i18n-content="meta.description">
+<meta property="og:description" content="Update once in Autodesk Forma, updated everywhere. Samofin Connector copies new drawings, models and documents to Procore, AjourBox and SharePoint." data-i18n-content="meta.description">
 <meta property="og:site_name" content="Samofin Tækni">
 <meta property="og:image" content="https://samofin.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Samofin Connector: Autodesk Forma to Procore, AjourBox and SharePoint">
+<meta property="og:image:alt" content="Samofin Connector: Autodesk Forma to Procore, AjourBox and SharePoint" data-i18n-content="og.image.alt">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -28,52 +28,7 @@
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://samofin.com/#website",
-      "name": "Samofin Tækni",
-      "alternateName": ["Samofin", "samofin.com"],
-      "url": "https://samofin.com/",
-      "inLanguage": ["en", "is"],
-      "publisher": { "@id": "https://samofin.com/#org" }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://samofin.com/#org",
-      "name": "Samofin Tækni",
-      "url": "https://samofin.com/",
-      "logo": "https://samofin.com/apple-touch-icon.png",
-      "email": "hello@samofin.com",
-      "sameAs": ["https://www.linkedin.com/company/145330138/"],
-      "founder": {
-        "@type": "Person",
-        "name": "Skúli Arnarsson",
-        "jobTitle": "Software developer",
-        "email": "skuli@samofin.com",
-        "sameAs": ["https://www.linkedin.com/in/skulipardus/"]
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Hafnarfjörður",
-        "addressCountry": "IS"
-      }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Samofin Connector",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "description": "Copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, fully logged, hosted in the EU.",
-      "url": "https://samofin.com/",
-      "publisher": { "@id": "https://samofin.com/#org" }
-    }
-  ]
-}
-</script>
+<!--site-jsonld-->
 <!--faq-jsonld-->
 <style>
 @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/fonts/manrope-latin-var.woff2) format('woff2'); }
@@ -88,7 +43,7 @@
   --rule: #CFCEC8;
   --mono: 'IBM Plex Mono', monospace;
 }
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 a:hover { color: var(--ink); text-decoration-color: var(--ink); }
@@ -116,6 +71,7 @@ a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 .lang a:hover { color: var(--ink); }
 .lang a[aria-current="page"] { background: var(--ink); color: var(--paper); }
 .header-mail { font-size: 15px; font-weight: 500; }
+@media (max-width: 600px) { .header-mail { display: none; } }
 
 /* Sections */
 section { border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
@@ -246,6 +202,7 @@ dl.rows dt { flex: 0 0 150px; font-family: var(--mono); font-size: 12px; line-he
 dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; color: var(--body); }
 
 /* Footer: title block */
+.trademarks { flex: 1 1 100%; margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted); text-wrap: pretty; }
 .site-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px 48px; padding: 48px 0 clamp(18px, 4vw, 48px); border-top: 1px solid var(--rule); }
 .footer-lead { flex: 1 1 320px; max-width: 460px; }
 .footer-lead > p { margin: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; font-weight: 500; }
@@ -303,7 +260,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <p data-i18n="hero.lede">Latest drawings, models and documents in Procore, AjourBox and SharePoint, automatically. Designers publish in Forma Data Management (formerly Autodesk Docs) as usual. Contractors get every new revision in their own system without downloading or re-uploading anything.</p>
           <div class="launch">
             <!--email_off--><a class="cta" href="mailto:hello@samofin.com?subject=Samofin%20Connector%20pilot&amp;body=Hi%2C%0D%0A%0D%0AWe%27d%20like%20to%20join%20the%20Samofin%20Connector%20pilot.%0D%0A%0D%0ACompany%3A%20%0D%0ATarget%20system%20%28Procore%20%2F%20AjourBox%20%2F%20SharePoint%29%3A%20%0D%0AProject%20we%27d%20start%20with%3A%20%0D%0AWhen%20we%27d%20like%20to%20start%3A%20%0D%0A%0D%0ABest%20regards%2C%0D%0A" data-i18n="hero.cta" data-i18n-href="hero.cta.href">Join the pilot</a><!--/email_off-->
-            <span class="label" data-i18n="hero.status">Launching 2027 · pilot places open</span>
+            <span class="label" data-i18n="hero.status">Pilot places open now · general launch 2027</span>
           </div>
           <video class="explainer" controls muted loop playsinline preload="none" width="1280" height="720" poster="/samofin-construction-sync-poster.jpg" aria-label="Explainer video: how Samofin Connector works (30 seconds)" data-i18n-aria-label="hero.video.label">
             <source src="/samofin-construction-sync.mp4" type="video/mp4">
@@ -313,13 +270,13 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <section id="problem" class="split">
           <h2 data-i18n="problem.title">Manual copying puts old drawings on site</h2>
           <div>
-            <p data-i18n="problem.body">Architects and engineers publish in Forma Data Management, part of the Autodesk Forma industry cloud (formerly Autodesk Construction Cloud, ACC) and increasingly the common data environment (CDE) owners require. Site work and quality control run in Procore, AjourBox or SharePoint. So someone copies every revision across by hand. It takes time every week, and one missed revision means building from an outdated drawing.</p>
+            <p data-i18n="problem.body">Architects and engineers publish in Forma Data Management, more and more often because the owner requires it. Site work and quality control run in Procore, AjourBox or SharePoint. So someone copies every revision across by hand. It takes time every week, and one missed revision means building from an outdated drawing.</p>
             <figure class="fig-block">
-              <div class="drift">
-                <div class="drift-row drift-head"><span data-i18n="drift.drawing">DRAWING</span><span>FORMA</span><span></span><span data-i18n="drift.site">SITE</span><span></span></div>
-                <div class="drift-row"><div><div>S-101</div><div class="desc">Foundation plan</div></div><span>V4</span><span></span><span class="stale">V2</span><span data-i18n="drift.behind2">2 behind</span></div>
-                <div class="drift-row"><div><div>S-201</div><div class="desc">Sections</div></div><span>V3</span><span></span><span>V3</span><span class="ok" data-i18n="drift.current">current</span></div>
-                <div class="drift-row"><div><div>A-110</div><div class="desc">Floor plan, level 1</div></div><span>V6</span><span></span><span class="stale">V5</span><span data-i18n="drift.behind1">1 behind</span></div>
+              <div class="drift" role="table" aria-label="Drawing versions in Forma and on site" data-i18n-aria-label="drift.table.label">
+                <div class="drift-row drift-head" role="row"><span role="columnheader" data-i18n="drift.drawing">DRAWING</span><span role="columnheader">FORMA</span><span role="presentation"></span><span role="columnheader" data-i18n="drift.site">SITE</span><span role="columnheader" data-i18n="drift.status">STATUS</span></div>
+                <div class="drift-row" role="row"><div role="cell"><div>S-101</div><div class="desc" data-i18n="file.s101">Foundation plan</div></div><span role="cell">V4</span><span role="presentation"></span><span role="cell" class="stale">V2</span><span role="cell" data-i18n="drift.behind2">2 behind</span></div>
+                <div class="drift-row" role="row"><div role="cell"><div>S-201</div><div class="desc" data-i18n="file.s201">Sections</div></div><span role="cell">V3</span><span role="presentation"></span><span role="cell">V3</span><span role="cell" class="ok" data-i18n="drift.current">current</span></div>
+                <div class="drift-row" role="row"><div role="cell"><div>A-110</div><div class="desc" data-i18n="file.a110">Floor plan, level 1</div></div><span role="cell">V6</span><span role="presentation"></span><span role="cell" class="stale">V5</span><span role="cell" data-i18n="drift.behind1">1 behind</span></div>
               </div>
               <div class="legend">
                 <span><span class="sw-hand"></span><span data-i18n="drift.legend.hand">copied by hand</span></span>
@@ -403,23 +360,23 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
                 <div class="tree">
                   <div class="tree-head"><span class="label" data-i18n="files.src">SOURCE · FORMA DATA MANAGEMENT</span><span class="mode" data-i18n="files.read">read</span></div>
                   <div class="tree-body">
-                    <div><span class="p">Project Files</span></div>
+                    <div><span class="p" data-i18n="files.root.src">Project Files</span></div>
                     <div class="muted"><span class="p">├─ 01_Arch</span></div>
                     <div><span class="p">├─ 02_Struct</span><span class="dot"></span></div>
-                    <div><span class="p">│  ├─ S-101 Foundation plan.pdf</span><span class="ver">V4</span></div>
-                    <div><span class="p">│  └─ S-201 Sections.pdf</span><span class="ver">V2</span></div>
+                    <div><span class="p">│  ├─ <span data-i18n="file.s101.pdf">S-101 Foundation plan.pdf</span></span><span class="ver">V4</span></div>
+                    <div><span class="p">│  └─ <span data-i18n="file.s201.pdf">S-201 Sections.pdf</span></span><span class="ver">V2</span></div>
                     <div class="muted"><span class="p">└─ 03_Mech</span></div>
                   </div>
                 </div>
                 <div class="tree">
                   <div class="tree-head"><span class="label" data-i18n="files.tgt">TARGET SYSTEM</span><span class="mode" data-i18n="files.write">write</span></div>
                   <div class="tree-body">
-                    <div><span class="p">Documents</span></div>
-                    <div><span class="p">└─ Drawings</span></div>
-                    <div><span class="p">   └─ Structural</span><span class="dot"></span></div>
-                    <div><span class="p">      ├─ S-101 Foundation plan.pdf</span><span class="ver">V4</span></div>
-                    <div><span class="p">      ├─ S-201 Sections.pdf</span><span class="ver">V2</span></div>
-                    <div class="muted"><span class="p">      └─ <s>S-150 Pile layout.pdf</s></span><span class="ver" data-i18n="files.flagged">flagged</span></div>
+                    <div><span class="p" data-i18n="files.root.tgt">Documents</span></div>
+                    <div><span class="p">└─ <span data-i18n="files.dir.drawings">Drawings</span></span></div>
+                    <div><span class="p">   └─ <span data-i18n="files.dir.structural">Structural</span></span><span class="dot"></span></div>
+                    <div><span class="p">      ├─ <span data-i18n="file.s101.pdf">S-101 Foundation plan.pdf</span></span><span class="ver">V4</span></div>
+                    <div><span class="p">      ├─ <span data-i18n="file.s201.pdf">S-201 Sections.pdf</span></span><span class="ver">V2</span></div>
+                    <div class="muted"><span class="p">      └─ <s data-i18n="file.s150.pdf">S-150 Pile layout.pdf</s></span><span class="ver" data-i18n="files.flagged">flagged</span></div>
                   </div>
                 </div>
               </div>
@@ -429,12 +386,12 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
               </div>
 
               <div class="vh">
-                <div class="vh-head"><span class="label" data-i18n="files.history">VERSION HISTORY</span><span>S-101 Foundation plan.pdf</span></div>
+                <div class="vh-head"><span class="label" data-i18n="files.history">VERSION HISTORY</span><span data-i18n="file.s101.pdf">S-101 Foundation plan.pdf</span></div>
                 <div class="vh-row cols label"><span data-i18n="files.col.ver">VER</span><span data-i18n="files.col.copied">COPIED</span><span data-i18n="files.col.to">TO</span></div>
-                <div class="vh-row"><span class="now">V4<span class="dot"></span></span><span>2026-10-14 09:12</span><span>Drawings/Structural</span></div>
-                <div class="vh-row"><span>V3</span><span>2026-09-30 15:41</span><span>Drawings/Structural</span></div>
-                <div class="vh-row"><span>V2</span><span>2026-09-12 11:06</span><span>Drawings/Structural</span></div>
-                <div class="vh-row"><span>V1</span><span>2026-08-28 08:31</span><span>Drawings/Structural</span></div>
+                <div class="vh-row"><span class="now">V4<span class="dot"></span></span><span>2026-10-14 09:12</span><span data-i18n="files.path">Drawings/Structural</span></div>
+                <div class="vh-row"><span>V3</span><span>2026-09-30 15:41</span><span data-i18n="files.path">Drawings/Structural</span></div>
+                <div class="vh-row"><span>V2</span><span>2026-09-12 11:06</span><span data-i18n="files.path">Drawings/Structural</span></div>
+                <div class="vh-row"><span>V1</span><span>2026-08-28 08:31</span><span data-i18n="files.path">Drawings/Structural</span></div>
               </div>
               <figcaption data-i18n="files.caption">Fig. 3 · Example. Folder names, files and dates are illustrative.</figcaption>
             </figure>
@@ -449,7 +406,8 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
               <div><dt data-i18n="p.nodelete.t">Never deletes</dt><dd data-i18n="p.nodelete.d">Nothing is deleted in your site system. Files removed in Autodesk are flagged for review.</dd></div>
               <div><dt data-i18n="p.versions.t">Versions, not copies</dt><dd data-i18n="p.versions.d">A new revision becomes a new version of the same file, so history stays in one place.</dd></div>
               <div><dt data-i18n="p.logged.t">Traceable</dt><dd data-i18n="p.logged.d">An append-only log of every file and version: what was copied, when and where.</dd></div>
-              <div><dt data-i18n="p.eu.t">EU-hosted</dt><dd data-i18n="p.eu.d">Hosted in the EU (Google Cloud, Finland).</dd></div>
+              <div><dt data-i18n="p.nostore.t">Nothing stored</dt><dd data-i18n="p.nostore.d">Files stream straight from Autodesk to your site system and are never kept. Only the log is stored.</dd></div>
+              <div><dt data-i18n="p.eu.t">EU-hosted</dt><dd data-i18n="p.eu.d">Runs in the EU (Google Cloud, Finland), so project data stays under EU data-protection law.</dd></div>
             </dl>
           </div>
         </section>
@@ -457,7 +415,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <section id="pricing" class="split">
           <h2 data-i18n="pricing.title">Priced per project, not per user</h2>
           <div>
-            <p><span data-i18n="pricing.body">A one-time setup, then a fixed monthly fee for each active project. Your whole team uses it at no extra cost, and finished projects are archived free. Tell us about your projects and we will send a quote.</span></p>
+            <p><span data-i18n="pricing.body">A one-time setup, then a fixed monthly fee for each active project. Your whole team uses it at no extra cost. Finished projects are archived free: syncing stops, and everything already copied stays in your site system. Tell us about your projects and we will send a quote.</span></p>
             <p class="pricing-cta"><!--email_off--><a class="cta" href="mailto:hello@samofin.com?subject=Quote%20for%20Samofin%20Connector&amp;body=Hi%2C%0D%0A%0D%0AWe%27d%20like%20a%20quote%20for%20Samofin%20Connector.%0D%0A%0D%0ACompany%3A%20%0D%0ATarget%20system%20%28Procore%20%2F%20AjourBox%20%2F%20SharePoint%29%3A%20%0D%0ANumber%20of%20active%20projects%3A%20%0D%0AWhen%20we%27d%20like%20to%20start%3A%20%0D%0A%0D%0ABest%20regards%2C%0D%0A" data-i18n="pricing.cta" data-i18n-href="pricing.href">Get a quote</a><!--/email_off--></p>
           </div>
         </section>
@@ -502,22 +460,23 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <div class="tb-row tb-meta">
             <div class="span2"><div class="label" data-i18n="tb.document">DOCUMENT</div><div class="v">SAMOFIN-WEB-001</div></div>
             <div><div class="label" data-i18n="tb.rev">REV</div><div class="v">A</div></div>
-            <div><div class="label" data-i18n="tb.date">DATE</div><div class="v">2026-10-19</div></div>
+            <div><div class="label" data-i18n="tb.date">DATE</div><div class="v">__BUILD_DATE__</div></div>
             <div><div class="label" data-i18n="tb.scale">SCALE</div><div class="v">NTS</div></div>
             <div><div class="label" data-i18n="tb.sheet">SHEET</div><div class="v">1 / 1</div></div>
           </div>
           <div class="tb-row tb-drawn">
             <div><span class="label" data-i18n="tb.drawnby">DRAWN BY</span><span class="v">Skúli Arnarsson</span></div>
           </div>
-          <div class="tb-status" data-i18n="tb.status">Status: launching 2027, pilot places open</div>
+          <div class="tb-status" data-i18n="tb.status">Status: pilot places open now, general launch 2027</div>
         </div>
+        <p class="trademarks" data-i18n="footer.trademarks">Autodesk and Forma are trademarks of Autodesk, Inc. Procore is a trademark of Procore Technologies, Inc. AjourBox is a trademark of EG A/S. SharePoint is a trademark of Microsoft Corporation. Samofin Tækni is not affiliated with or endorsed by any of them.</p>
       </footer>
 
     </div>
   </div>
 </div>
 <script>
-// Fig. 1 motion: while the diagram is on screen, each cycle bumps S-101's version in the
+// Fig. 2 motion: while the diagram is on screen, each cycle bumps S-101's version in the
 // source, flies it to the connector, logs it, then fans it out to every target.
 (() => {
   const fig = document.querySelector('#how figure');
@@ -551,11 +510,12 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
   }, { threshold: 0.4 }).observe(fig);
 })();
 
-// Explainer video: plays muted on loop while on screen, unless reduced motion is preferred
-// or the visitor paused it themselves.
+// Explainer video: plays muted on loop while on screen, unless reduced motion or reduced data is
+// preferred, the viewport is phone-sized (the file is large), or the visitor paused it themselves.
 (() => {
   const video = document.querySelector('.explainer');
-  if (!video || !window.IntersectionObserver || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!video || !window.IntersectionObserver) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(prefers-reduced-data: reduce)').matches || !matchMedia('(min-width: 700px)').matches) return;
   let auto = false, userPaused = false;
   video.addEventListener('pause', () => { if (!auto) userPaused = true; auto = false; });
   video.addEventListener('play', () => { userPaused = false; });
