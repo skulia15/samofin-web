@@ -305,7 +305,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
             <!--email_off--><a class="cta" href="mailto:hello@samofin.com?subject=Samofin%20Connector%20pilot&amp;body=Hi%2C%0D%0A%0D%0AWe%27d%20like%20to%20join%20the%20Samofin%20Connector%20pilot.%0D%0A%0D%0ACompany%3A%20%0D%0ATarget%20system%20%28Procore%20%2F%20AjourBox%20%2F%20SharePoint%29%3A%20%0D%0AProject%20we%27d%20start%20with%3A%20%0D%0AWhen%20we%27d%20like%20to%20start%3A%20%0D%0A%0D%0ABest%20regards%2C%0D%0A" data-i18n="hero.cta" data-i18n-href="hero.cta.href">Join the pilot</a><!--/email_off-->
             <span class="label" data-i18n="hero.status">Launching 2027 · pilot places open</span>
           </div>
-          <video class="explainer" controls playsinline preload="none" width="1280" height="720" poster="/samofin-construction-sync-poster.jpg" aria-label="Explainer video: how Samofin Connector works (30 seconds)" data-i18n-aria-label="hero.video.label">
+          <video class="explainer" controls muted loop playsinline preload="none" width="1280" height="720" poster="/samofin-construction-sync-poster.jpg" aria-label="Explainer video: how Samofin Connector works (30 seconds)" data-i18n-aria-label="hero.video.label">
             <source src="/samofin-construction-sync.mp4" type="video/mp4">
           </video>
         </section>
@@ -549,6 +549,21 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
     visible = e.isIntersecting;
     if (visible && !running) { running = true; at(400, cycle); }
   }, { threshold: 0.4 }).observe(fig);
+})();
+
+// Explainer video: plays muted on loop while on screen, unless reduced motion is preferred
+// or the visitor paused it themselves.
+(() => {
+  const video = document.querySelector('.explainer');
+  if (!video || !window.IntersectionObserver || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = false, userPaused = false;
+  video.addEventListener('pause', () => { if (!auto) userPaused = true; auto = false; });
+  video.addEventListener('play', () => { userPaused = false; });
+  new IntersectionObserver((entries) => {
+    const e = entries[entries.length - 1]; // fast scrolls batch several entries; the last is current
+    if (e.isIntersecting && !userPaused) video.play().catch(() => {});
+    else if (!e.isIntersecting && !video.paused) { auto = true; video.pause(); }
+  }, { threshold: 0.5 }).observe(video);
 })();
 </script>
 </body>
