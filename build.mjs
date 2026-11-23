@@ -16,7 +16,7 @@ const is = JSON.parse(readFileSync(`${SRC}/is.json`, 'utf8'));
 // English strings that live outside the HTML template (site JSON-LD). Icelandic overrides them.
 const en = {
   'jsonld.app.description':
-    'Copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. One-way, fully logged, hosted in the EU.',
+    'Copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. It has read-only access to Autodesk, logs every copy and runs in the EU.',
   'jsonld.founder.jobTitle': 'Software developer',
 };
 
