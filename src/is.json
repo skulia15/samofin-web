@@ -105,6 +105,8 @@
     "og.image.alt": "Samofin-tengillinn: Autodesk Forma í Procore, AjourBox og SharePoint",
     "jsonld.app.description": "Afritar nýjustu teikningar, líkön og skjöl úr Forma Data Management (áður Autodesk Docs, Autodesk Construction Cloud) í Procore, AjourBox og SharePoint. Hefur aðeins lesaðgang að Autodesk, skráir hverja afritun og keyrir í ESB.",
     "jsonld.founder.jobTitle": "Forritari",
+    "jsonld.video.name": "Svona virkar Samofin-tengillinn",
+    "jsonld.video.description": "Sýnir hvernig Samofin-tengillinn afritar nýjar útgáfur úr Autodesk Forma í Procore, AjourBox og SharePoint.",
     "drift.table.label": "Útgáfur teikninga í Forma og á verkstað",
     "drift.status": "STAÐA",
     "file.s101": "Sökklateikning",
