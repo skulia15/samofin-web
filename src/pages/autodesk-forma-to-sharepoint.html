@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-lang="lang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="sp.meta.title">Autodesk Forma (ACC) to SharePoint sync – Samofin</title>
+<meta name="description" data-i18n-content="sp.meta.description" content="Samofin Connector copies new drawings and documents from Autodesk Forma (formerly Autodesk Docs) to one SharePoint site. It can access only that site, never deletes files and logs every copy.">
+<meta name="theme-color" content="#F6F5F1">
+<link rel="canonical" href="https://samofin.com__PATH__">
+<link rel="alternate" hreflang="en" href="https://samofin.com__PATH_EN__">
+<link rel="alternate" hreflang="is" href="https://samofin.com__PATH_IS__">
+<link rel="alternate" hreflang="x-default" href="https://samofin.com__PATH_EN__">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samofin.com__PATH__">
+<meta property="og:locale" content="en_GB" data-i18n-content="og.locale">
+<meta property="og:locale:alternate" content="is_IS" data-i18n-content="og.locale.alternate">
+<meta property="og:title" content="Autodesk Forma (ACC) to SharePoint sync – Samofin" data-i18n-content="sp.meta.title">
+<meta property="og:description" content="Samofin Connector copies new drawings and documents from Autodesk Forma (formerly Autodesk Docs) to one SharePoint site. It can access only that site, never deletes files and logs every copy." data-i18n-content="sp.meta.description">
+<meta property="og:site_name" content="Samofin Tækni">
+<meta property="og:image" content="https://samofin.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Samofin Connector: Autodesk Forma to Procore, AjourBox and SharePoint" data-i18n-content="og.image.alt">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<!--site-jsonld-->
+<!--faq-jsonld-->
+<style>
+<!--include:style.css-->
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="sheet">
+    <div class="inner">
+
+      <header class="site-header">
+        <a href="__LINK:home__" class="brand" aria-label="Samofin Tækni">
+          <img src="/samofin-mark.svg" alt="">
+          <span class="brand-name">Samofin <span>Tækni</span></span>
+        </a>
+        <nav class="site-nav" aria-label="Sections" data-i18n-aria-label="nav.label">
+          <a href="#access" data-i18n="sp.nav.access">Access</a>
+          <a href="#setup" data-i18n="sp.nav.setup">Setup</a>
+          <a href="#library" data-i18n="sp.nav.library">Library settings</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </nav>
+        <div class="header-end">
+          <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
+            <a href="__PATH_EN__" hreflang="en" lang="en" title="English" aria-current="page" data-i18n-aria-current="lang.current.en">EN</a>
+            <a href="__PATH_IS__" hreflang="is" lang="is" title="Íslenska" aria-current="false" data-i18n-aria-current="lang.current.is">IS</a>
+          </div>
+          <a class="header-mail" href="mailto:hello@samofin.com">hello@samofin.com</a>
+        </div>
+      </header>
+
+      <main>
+        <section id="top" class="hero">
+          <h1 data-i18n="sp.hero.title">Copy drawings from Autodesk Forma to SharePoint automatically</h1>
+          <p data-i18n="sp.hero.lede">Samofin Connector copies new drawings, models and documents from Forma Data Management (formerly Autodesk Docs) to a document library on your SharePoint site. Each new revision is added as a new version of the existing file, so everyone who opens the library sees the current revision. This page explains what the connector can access in Microsoft 365 and what your administrator does to set it up.</p>
+          <div class="launch">
+            <!--email_off--><a class="cta" href="mailto:hello@samofin.com?subject=Samofin%20Connector%20for%20SharePoint&amp;body=Hi%2C%0D%0A%0D%0AWe%27d%20like%20to%20copy%20files%20from%20Autodesk%20Forma%20to%20SharePoint%20with%20Samofin%20Connector.%0D%0A%0D%0ACompany%3A%20%0D%0ASharePoint%20site%3A%20%0D%0AProject%20we%27d%20start%20with%3A%20%0D%0A%0D%0ABest%20regards%2C%0D%0A" data-i18n="hero.cta" data-i18n-href="sp.cta.href">Join the pilot</a><!--/email_off-->
+            <span class="label" data-i18n="hero.status">Pilot places open now · general launch 2027</span>
+          </div>
+        </section>
+
+        <section id="access" class="split">
+          <h2 data-i18n="sp.access.title">What the connector can access in Microsoft 365</h2>
+          <div>
+            <dl class="rows">
+              <div><dt data-i18n="sp.access.site.t">One site only</dt><dd data-i18n="sp.access.site.d">The connector asks Microsoft for the Sites.Selected permission, which grants nothing on its own. Your administrator then gives it write access to one site. It cannot see your other sites, mail, Teams or users.</dd></div>
+              <div><dt data-i18n="sp.access.cert.t">No passwords</dt><dd data-i18n="sp.access.cert.d">The connector signs in with a certificate held by Samofin. No user account or password is shared with us.</dd></div>
+              <div><dt data-i18n="p.nodelete.t">Nothing is deleted</dt><dd data-i18n="sp.access.nodelete.d">The connector creates folders, uploads files and adds new versions. It never deletes, moves or renames anything in SharePoint, even when a file is deleted in Autodesk.</dd></div>
+              <div><dt data-i18n="sp.access.revoke.t">Access can be removed</dt><dd data-i18n="sp.access.revoke.d">Your administrator can remove the connector’s access at any time. Copying stops immediately, and files already copied stay where they are.</dd></div>
+              <div><dt data-i18n="p.eu.t">Hosted in the EU</dt><dd data-i18n="sp.access.eu.d">Files pass through Samofin’s servers on Google Cloud in Finland and are not stored there.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section id="setup" class="split">
+          <h2 data-i18n="sp.setup.title">Setup takes your administrator about 15 minutes</h2>
+          <div>
+            <p data-i18n="sp.setup.body">Setup is done by a Global Administrator or Privileged Role Administrator of your Microsoft 365 tenant. We send the consent link and the exact commands.</p>
+            <ol class="rows steps">
+              <li><span class="n">1</span><span class="t" data-i18n="sp.step.approve.t">Approve</span><span class="d" data-i18n="sp.step.approve.d">Open the consent link we send and sign in. Check that the app is Samofin Connector and that the permission is “Access selected site collections”, then accept.</span></li>
+              <li><span class="n">2</span><span class="t" data-i18n="sp.step.grant.t">Grant</span><span class="d" data-i18n="sp.step.grant.d">Give the connector write access to the chosen site, with one request in Graph Explorer or one PnP PowerShell command.</span></li>
+              <li><span class="n">3</span><span class="t" data-i18n="sp.step.check.t">Check</span><span class="d" data-i18n="sp.step.check.d">Check the document library’s settings, which are listed in the next section.</span></li>
+              <li><span class="n">4</span><span class="t" data-i18n="sp.step.send.t">Send</span><span class="d" data-i18n="sp.step.send.d">Send us the site URL, the library name and your tenant ID. We run a read-only check and confirm with you before anything is copied.</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="library" class="split">
+          <h2 data-i18n="sp.library.title">Document library settings to check</h2>
+          <div>
+            <p data-i18n="sp.library.body">We recommend a library used only for these files, so people know it is kept up to date automatically. If people only need to read the files, give them read access to the library. The connector is then the only one that writes to it, which suits an archive or handover copy.</p>
+            <dl class="rows">
+              <div><dt data-i18n="sp.library.versions.t">Versioning</dt><dd data-i18n="sp.library.versions.d">Create major versions. Minor versions are drafts, so readers would not see new revisions.</dd></div>
+              <div><dt data-i18n="sp.library.approval.t">Content approval</dt><dd data-i18n="sp.library.approval.d">Turn content approval off. Otherwise each new revision waits for approval before others can see it.</dd></div>
+              <div><dt data-i18n="sp.library.checkout.t">Check-out</dt><dd data-i18n="sp.library.checkout.d">Do not require check-out. If it must stay on, tell us, and the connector checks in each file it uploads.</dd></div>
+              <div><dt data-i18n="sp.library.columns.t">Required columns</dt><dd data-i18n="sp.library.columns.d">Make sure no column is required. A required column without a value keeps uploaded files checked out and hidden from others.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section id="faq" class="split">
+          <h2 data-i18n="faq.title">Questions and answers</h2>
+          <div>
+            <dl class="rows faq">
+              <div><dt data-i18n="sp.faq.oneway.q">Is this two-way sync?</dt><dd data-i18n="sp.faq.oneway.a">The connector copies in one direction only, from Autodesk to SharePoint. Changes made in SharePoint are not sent back to Autodesk.</dd></div>
+              <div><dt data-i18n="sp.faq.deleted.q">What happens when a file is deleted in Autodesk?</dt><dd data-i18n="sp.faq.deleted.a">The file stays in SharePoint, and the connector flags it for you to review.</dd></div>
+              <div><dt data-i18n="sp.faq.paths.q">Are long folder paths a problem?</dt><dd data-i18n="sp.faq.paths.a">SharePoint allows at most 400 characters in a file’s full path. If Autodesk folders are nested so deeply that a path would be longer, the connector skips those files and records each one in the log.</dd></div>
+              <div><dt data-i18n="sp.faq.library.q">Can access be limited to one document library?</dt><dd data-i18n="sp.faq.library.a">The connector can be limited to a single document library instead of the whole site. Tell us before setup, and we send the commands for that instead.</dd></div>
+              <div><dt data-i18n="sp.faq.remove.q">How do we remove access?</dt><dd data-i18n="sp.faq.remove.a">Remove the connector’s site permission in Graph Explorer, or delete Samofin Connector under Enterprise applications in the Microsoft Entra admin center. Either one stops all copying immediately, and files already copied stay where they are.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section id="more" class="split">
+          <h2 data-i18n="sp.more.title">More about Samofin Connector</h2>
+          <div>
+            <p><span data-i18n="sp.more.body">The connector checks linked folders for changes every 15 minutes and logs every copy. It also copies to Procore and AjourBox, at a fixed monthly price for each project.</span> <a href="__LINK:home__" data-i18n="sp.more.link">How Samofin Connector works</a></p>
+          </div>
+        </section>
+      </main>
+
+      <!--include:footer.html-->
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
