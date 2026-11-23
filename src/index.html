@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="meta.title">Autodesk Forma (ACC) to Procore, AjourBox &amp; SharePoint – Samofin</title>
-<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings, models and documents from Autodesk Forma to Procore, AjourBox and SharePoint, so the site always works from the current revision.">
+<meta name="description" data-i18n-content="meta.description" content="Samofin Connector copies new drawings, models and documents from Autodesk Forma to Procore, AjourBox and SharePoint, so the site works from the current revision.">
 <meta name="theme-color" content="#F6F5F1">
 <link rel="canonical" href="https://samofin.com/" data-i18n-href="url.self">
 <link rel="alternate" hreflang="en" href="https://samofin.com/">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_GB" data-i18n-content="og.locale">
 <meta property="og:locale:alternate" content="is_IS" data-i18n-content="og.locale.alternate">
 <meta property="og:title" content="Autodesk Forma (ACC) to Procore, AjourBox &amp; SharePoint – Samofin" data-i18n-content="meta.title">
-<meta property="og:description" content="Samofin Connector copies new drawings, models and documents from Autodesk Forma to Procore, AjourBox and SharePoint, so the site always works from the current revision." data-i18n-content="meta.description">
+<meta property="og:description" content="Samofin Connector copies new drawings, models and documents from Autodesk Forma to Procore, AjourBox and SharePoint, so the site works from the current revision." data-i18n-content="meta.description">
 <meta property="og:site_name" content="Samofin Tækni">
 <meta property="og:image" content="https://samofin.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -345,7 +345,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
               <li><span class="n">1</span><span class="t" data-i18n="step.connect.t">Connect</span><span class="d" data-i18n="step.connect.d">Your Autodesk administrator gives Samofin Connector read-only access as a custom integration.</span></li>
               <li><span class="n">2</span><span class="t" data-i18n="step.map.t">Link folders</span><span class="d" data-i18n="step.map.d">We work with you to decide which Autodesk folders go to which folders in your site system.</span></li>
               <li><span class="n">3</span><span class="t" data-i18n="step.review.t">Review</span><span class="d" data-i18n="step.review.d">Before anything is copied, you see a test run that lists every file the connector will create.</span></li>
-              <li><span class="n">4</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">From then on, each new revision is copied automatically and recorded in the log.</span></li>
+              <li><span class="n">4</span><span class="t" data-i18n="step.sync.t">Sync</span><span class="d" data-i18n="step.sync.d">From then on, the connector copies each new revision automatically and records it in the log.</span></li>
             </ol>
           </div>
         </section>
@@ -353,7 +353,7 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
         <section id="files" class="split">
           <h2 data-i18n="files.title">Every revision goes to the matching folder</h2>
           <div>
-            <p data-i18n="files.body">Each folder in Forma Data Management is linked to a folder in your site system. When a file changes, the new version is copied to the linked folder, and the log records which version went where and when.</p>
+            <p data-i18n="files.body">Each folder in Forma Data Management is linked to a folder in your site system. When a file changes, the connector copies the new version to the linked folder, and the log records which version went where and when.</p>
 
             <figure class="fig-block">
               <div class="trees">
@@ -403,10 +403,10 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <div>
             <dl class="rows">
               <div><dt data-i18n="p.oneway.t">Read-only in Autodesk</dt><dd data-i18n="p.oneway.d">The connector reads from Forma Data Management and never writes to it.</dd></div>
-              <div><dt data-i18n="p.nodelete.t">Nothing is deleted</dt><dd data-i18n="p.nodelete.d">The connector does not delete files in your site system. If a file is removed in Autodesk, it is flagged for you to review.</dd></div>
+              <div><dt data-i18n="p.nodelete.t">Nothing is deleted</dt><dd data-i18n="p.nodelete.d">The connector does not delete files in your site system. If a file is removed in Autodesk, the connector flags it for you to review.</dd></div>
               <div><dt data-i18n="p.versions.t">Full version history</dt><dd data-i18n="p.versions.d">Each revision is added as a new version of the existing file, so the file’s history stays in one place.</dd></div>
               <div><dt data-i18n="p.logged.t">Complete log</dt><dd data-i18n="p.logged.d">Every copy is recorded: which file and version, when, and where it went. Log entries cannot be changed.</dd></div>
-              <div><dt data-i18n="p.nostore.t">No file storage</dt><dd data-i18n="p.nostore.d">Files pass straight from Autodesk to your site system and are not kept by the connector. Only the log is stored.</dd></div>
+              <div><dt data-i18n="p.nostore.t">No file storage</dt><dd data-i18n="p.nostore.d">Files pass straight from Autodesk to your site system, and the connector does not keep a copy. Only the log is stored.</dd></div>
               <div><dt data-i18n="p.eu.t">Hosted in the EU</dt><dd data-i18n="p.eu.d">The connector runs on Google Cloud in Finland, so project data stays under EU data-protection law.</dd></div>
             </dl>
           </div>
@@ -424,13 +424,13 @@ dl.rows dd { flex: 1 1 260px; margin: 0; font-size: 17px; line-height: 1.5; colo
           <h2 data-i18n="faq.title">Questions and answers</h2>
           <div>
             <dl class="rows faq">
-              <div><dt data-i18n="faq.types.q">Which file types can it copy?</dt><dd data-i18n="faq.types.a">Any file type. The connector copies every file in a linked folder unchanged, including PDF, DWG, IFC, RVT and Office files.</dd></div>
-              <div><dt data-i18n="faq.speed.q">How quickly do new revisions appear?</dt><dd data-i18n="faq.speed.a">Within an hour. By default, the connector checks linked folders for changes every 15 minutes.</dd></div>
+              <div><dt data-i18n="faq.types.q">Which file types can it copy?</dt><dd data-i18n="faq.types.a">The connector copies every file in a linked folder unchanged, whatever its type, including PDF, DWG, IFC, RVT and Office files.</dd></div>
+              <div><dt data-i18n="faq.speed.q">How quickly do new revisions appear?</dt><dd data-i18n="faq.speed.a">New revisions appear within an hour. By default, the connector checks linked folders for changes every 15 minutes.</dd></div>
               <div><dt data-i18n="faq.perms.q">What access does it need?</dt><dd data-i18n="faq.perms.a">In Autodesk, it needs read-only access to Forma Data Management. Your Autodesk administrator grants this as a custom integration. In your site system, it uses its own service account, limited to the projects or sites you choose. It never writes to Autodesk and never deletes anything.</dd></div>
-              <div><dt data-i18n="faq.setup.q">How long does setup take?</dt><dd data-i18n="faq.setup.a">Usually a few weeks from signing to going live. We link the folders with you and you review a test run. The connector then runs alongside your current process for one to two weeks before you switch over.</dd></div>
-              <div><dt data-i18n="faq.revisions.q">What happens when a drawing is revised?</dt><dd data-i18n="faq.revisions.a">The new revision is added as a new version of the existing file in your site system, so its history is kept and nothing is duplicated. Older versions are never removed. If a file is renamed or moved, the connector follows it instead of uploading it again.</dd></div>
+              <div><dt data-i18n="faq.setup.q">How long does setup take?</dt><dd data-i18n="faq.setup.a">Setup takes a week at most. We link the folders with you and you review a test run. After that, the connector runs alongside your current process for one to two weeks before you switch over.</dd></div>
+              <div><dt data-i18n="faq.revisions.q">What happens when a drawing is revised?</dt><dd data-i18n="faq.revisions.a">The connector adds the new revision as a new version of the existing file in your site system, so its history is kept and nothing is duplicated. It never removes older versions. If a file is renamed or moved, the connector follows it instead of uploading it again.</dd></div>
               <div><dt data-i18n="faq.targets.q">Which systems does it support?</dt><dd data-i18n="faq.targets.a">The source is Forma Data Management (formerly Autodesk Docs, part of Autodesk Construction Cloud). The connector copies to Procore, AjourBox and SharePoint, and one Autodesk project can send to several of them at once.</dd></div>
-              <div><dt data-i18n="faq.start.q">When can we start?</dt><dd data-i18n="faq.start.a">Pilot places are open now. Samofin Connector is generally available from 2027. Pilot customers are set up first and have a say in what we build next.</dd></div>
+              <div><dt data-i18n="faq.start.q">When can we start?</dt><dd data-i18n="faq.start.a">Pilot places are open now. Samofin Connector is generally available from 2027. We set up pilot customers first, and they have a say in what we build next.</dd></div>
             </dl>
           </div>
         </section>
