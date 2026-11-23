@@ -18,6 +18,9 @@ const en = {
   'jsonld.app.description':
     'Copies the latest drawings, models and documents from Forma Data Management (formerly Autodesk Docs, Autodesk Construction Cloud) to Procore, AjourBox and SharePoint. It has read-only access to Autodesk, logs every copy and runs in the EU.',
   'jsonld.founder.jobTitle': 'Software developer',
+  'jsonld.video.name': 'How Samofin Connector works',
+  'jsonld.video.description':
+    'Shows how Samofin Connector copies new revisions from Autodesk Forma to Procore, AjourBox and SharePoint.',
 };
 
 // Footer title block and sitemap <lastmod>: date of the last commit, or today when not in git.
@@ -114,6 +117,18 @@ function siteJsonLd(dict) {
         description: dict['jsonld.app.description'],
         url: dict['url.self'] ?? 'https://samofin.com/',
         inLanguage: dict['lang'] ?? 'en',
+        publisher: { '@id': 'https://samofin.com/#org' },
+      },
+      {
+        // The hero explainer. The video itself is in English on both pages.
+        '@type': 'VideoObject',
+        name: dict['jsonld.video.name'],
+        description: dict['jsonld.video.description'],
+        thumbnailUrl: 'https://samofin.com/samofin-construction-sync-poster.jpg',
+        contentUrl: 'https://samofin.com/samofin-construction-sync.mp4',
+        uploadDate: '2026-10-22',
+        duration: 'PT30S',
+        inLanguage: 'en',
         publisher: { '@id': 'https://samofin.com/#org' },
       },
     ],
