@@ -22,7 +22,7 @@
     "hero.status": "Opið fyrir fyrstu notendur · almenn útgáfa 2027",
     "hero.video.label": "Kynningarmyndband: svona virkar Samofin-tengillinn (30 sekúndur, á ensku)",
     "problem.title": "Þegar skrár eru afritaðar handvirkt dregst verkstaðurinn aftur úr",
-    "problem.body": "Arkitektar og verkfræðingar gefa teikningar sínar út í Forma Data Management, æ oftar vegna þess að verkkaupi fer fram á það. Verktakar halda hins vegar utan um framkvæmdir og gæðaeftirlit í Procore, AjourBox eða SharePoint. Einhver þarf því að afrita hverja nýja útgáfu á milli kerfa. Þetta er síendurtekin vinna og ef ein útgáfa gleymist er hætta á að byggt sé eftir úreltri teikningu.",
+    "problem.body": "Arkitektar og verkfræðingar gefa teikningar sínar út í Forma Data Management. Verktakar halda hins vegar utan um framkvæmdir og gæðaeftirlit í Procore, AjourBox eða SharePoint. Einhver þarf því að afrita hverja nýja útgáfu á milli kerfa. Þetta er síendurtekin vinna og ef ein útgáfa gleymist er hætta á að byggt sé eftir úreltri teikningu.",
     "drift.drawing": "TEIKNING",
     "drift.site": "KERFI",
     "drift.behind2": "2 á eftir",
