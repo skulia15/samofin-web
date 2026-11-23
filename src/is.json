@@ -87,6 +87,7 @@
     "faq.revisions.a": "Tengillinn bætir nýju útgáfunni við skrána sem fyrir er í kerfinu þínu, svo sagan varðveitist og ekkert tvítekst. Hann fjarlægir aldrei eldri útgáfur. Ef skrá fær nýtt heiti eða er færð fylgir tengillinn henni í stað þess að hlaða henni upp aftur.",
     "faq.targets.q": "Hvaða kerfi eru studd?",
     "faq.targets.a": "Uppruninn er Forma Data Management (áður Autodesk Docs, hluti af Autodesk Construction Cloud). Tengillinn afritar í Procore, AjourBox og SharePoint og hægt er að afrita úr einu Autodesk-verkefni í fleiri en eitt þeirra í einu.",
+    "faq.targets.sharepoint": "Svona virkar tengillinn með SharePoint",
     "faq.start.q": "Hvenær getum við byrjað?",
     "faq.start.a": "Opið er fyrir fyrstu notendur núna og tengillinn verður almennt fáanlegur 2027. Fyrstu notendurnir fá tengilinn á undan öðrum og hafa áhrif á hvað við þróum næst.",
     "footer.cta": "Hafðu samband",

@@ -196,13 +196,14 @@ const videoJsonLd = (dict) =>
   });
 
 // FAQPage structured data built from the rendered #faq section, so it always matches the page.
+// Answers may end with a link to another page; the structured data leaves links out.
 function faqJsonLd(html) {
   const section = html.match(/<section id="faq"[\s\S]*?<\/section>/)?.[0];
   if (!section) throw new Error('no #faq section');
-  const mainEntity = [...section.matchAll(/<dt>([^<]*)<\/dt><dd>([^<]*)<\/dd>/g)].map(([, q, a]) => ({
+  const mainEntity = [...section.matchAll(/<dt>([^<]*)<\/dt><dd>([\s\S]*?)<\/dd>/g)].map(([, q, a]) => ({
     '@type': 'Question',
     name: unescape(q),
-    acceptedAnswer: { '@type': 'Answer', text: unescape(a) },
+    acceptedAnswer: { '@type': 'Answer', text: unescape(a.replace(/<a\s[\s\S]*?<\/a>/g, '').replace(/<[^>]+>/g, '').trim()) },
   }));
   if (!mainEntity.length) throw new Error('no FAQ entries found');
   return jsonLdScript({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity });
